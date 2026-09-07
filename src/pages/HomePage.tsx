@@ -46,7 +46,7 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
       subtitle: "Comprehensive AMC Solutions for Industrial Plants, Malls & Townships",
       description: "Providing effective round-the-clock operation and maintenance of electrical, mechanical, and HVAC equipment for industrial complexes and commercial townships across India.",
       badge: "24/7 Technical Support & Maintenance",
-      primaryCta: "Request Consultation",
+      primaryCta: "Reach Us Direct",
       targetPage: "contact",
       bgGradient: "from-slate-950 via-blue-900 to-slate-900"
     }
@@ -66,11 +66,11 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
       {/* Dynamic Executive Hero Showcase Slider Section */}
       <section className="relative bg-slate-900 text-white overflow-hidden border-b border-slate-800">
         
-        {/* Background Subtle Gradient & Glow */}
+        {/* Background Glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-slate-900 to-blue-950/40 pointer-events-none" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 lg:py-20 relative z-10">
+        <div className="container-versatile py-12 lg:py-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Hero Left Content */}
@@ -88,7 +88,7 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
               </div>
 
               {/* Dynamic Slide Heading */}
-              <div className="min-h-[160px] sm:min-h-[180px] flex flex-col justify-center space-y-3 transition-all duration-500">
+              <div className="min-h-[140px] sm:min-h-[160px] flex flex-col justify-center space-y-3 transition-all duration-500">
                 <div className="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase flex items-center gap-2">
                   <Sparkles className="w-3.5 h-3.5" /> {heroSlides[activeSlide].badge}
                 </div>
@@ -199,7 +199,7 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
 
       {/* Key Metrics Counter Bar */}
       <section className="bg-slate-950 text-white py-10 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
             {companyData.stats.map((st, idx) => (
               <div key={idx} className="pt-4 md:pt-0">
@@ -212,30 +212,24 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* Corporate About Overview & Policy Tabs */}
-      <section className="py-16 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Streamlined Corporate About Overview */}
+      <section className="py-14 bg-white border-b border-slate-200">
+        <div className="container-versatile">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
                 Company Profile
               </span>
               <h2 className="text-3xl font-bold text-slate-900 font-serif leading-tight">
                 About Grace Electrical & Contractors Pvt. Ltd.
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">
                 {classNameAboutInfo.aboutText1}
               </p>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {classNameAboutInfo.aboutText2}
-              </p>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {classNameAboutInfo.aboutText3}
-              </p>
 
-              {/* Corporate Guiding Policies Interactive Tab Bar */}
-              <div className="pt-4 space-y-3">
+              {/* Policy Tabs Summary */}
+              <div className="pt-2 space-y-3">
                 <div className="flex border-b border-slate-200 text-xs font-bold text-slate-600 space-x-4">
                   <button 
                     onClick={() => setActivePolicyTab('quality')}
@@ -271,29 +265,20 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
                   </button>
                 </div>
 
-                {/* Tab Content */}
                 <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 italic leading-relaxed">
-                  {activePolicyTab === 'quality' && (
-                    <div>"{classNameAboutInfo.qualityPolicy}"</div>
-                  )}
-                  {activePolicyTab === 'safety' && (
-                    <div>"{classNameAboutInfo.safetyPolicy}"</div>
-                  )}
-                  {activePolicyTab === 'environment' && (
-                    <div>"{classNameAboutInfo.environmentPolicy}"</div>
-                  )}
-                  {activePolicyTab === 'mission' && (
-                    <div>"{classNameAboutInfo.mission}"</div>
-                  )}
+                  {activePolicyTab === 'quality' && <div>"{classNameAboutInfo.qualityPolicy}"</div>}
+                  {activePolicyTab === 'safety' && <div>"{classNameAboutInfo.safetyPolicy}"</div>}
+                  {activePolicyTab === 'environment' && <div>"{classNameAboutInfo.environmentPolicy}"</div>}
+                  {activePolicyTab === 'mission' && <div>"{classNameAboutInfo.mission}"</div>}
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center gap-4">
+              <div className="pt-2">
                 <button
                   onClick={() => onNavigate('about')}
                   className="px-6 py-3 bg-slate-900 hover:bg-grace-primary text-white text-xs font-bold transition-colors flex items-center gap-2 rounded-xl"
                 >
-                  Read Full Company Profile <ArrowRight className="w-4 h-4 text-cyan-400" />
+                  Read Full Corporate Profile & Credentials <ArrowRight className="w-4 h-4 text-cyan-400" />
                 </button>
               </div>
             </div>
@@ -306,21 +291,16 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
               />
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium space-y-2">
                 <div className="font-bold text-slate-900 flex items-center justify-between">
-                  <span>Head Office (Noida)</span>
-                  <span className="text-grace-primary font-mono text-[11px]">Est. 2008</span>
+                  <span>Noida Head Office</span>
+                  <span className="text-grace-primary font-mono text-[11px]">Sector 65</span>
                 </div>
                 <div className="text-slate-600">A-60, Sector 65, Noida, G.B Nagar, U.P-201301</div>
                 
                 <div className="pt-2 border-t border-slate-200 font-bold text-slate-900 flex items-center justify-between">
-                  <span>Manufacturing Plant</span>
+                  <span>Greater Noida Plant</span>
                   <span className="text-emerald-700 font-mono text-[11px]">UPSIDA Site-5</span>
                 </div>
                 <div className="text-slate-600">N-20, Surajpur Industrial Area, Site-5, UPSIDA, Greater Noida</div>
-
-                <div className="text-slate-500 font-mono pt-2 border-t border-slate-200 flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
-                  <span>Landlines: 0120-3511739, 3512647</span>
-                  <span>Mobile: +91-9990095954</span>
-                </div>
               </div>
             </div>
 
@@ -328,11 +308,11 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* Our Core Engineering Divisions (Zoom-in Hover Cards) */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Our Core Engineering Divisions */}
+      <section className="py-14 bg-slate-50 border-b border-slate-200">
+        <div className="container-versatile">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
             <div>
               <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1 rounded-full shadow-xs">
                 Core Capabilities
@@ -437,9 +417,9 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* Electrical Panels Range & Specifications Matrix (Zoom-in Hover Cards) */}
-      <section className="py-16 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Featured Electrical Panels Catalog Highlight */}
+      <section className="py-14 bg-white border-b border-slate-200">
+        <div className="container-versatile">
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
             <div>
@@ -447,14 +427,14 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
                 Manufacturing Range
               </span>
               <h3 className="text-3xl font-bold text-slate-900 font-serif mt-2">
-                Electrical Panel Range & Ratings
+                Featured Electrical Panels Range
               </h3>
             </div>
             <button
               onClick={() => onNavigate('products')}
               className="px-5 py-2.5 bg-slate-900 hover:bg-grace-primary text-white text-xs font-bold transition-colors flex items-center gap-2 rounded-xl shadow-xs hover:shadow-md"
             >
-              View Panels Catalog <ArrowRight className="w-4 h-4 text-cyan-400" />
+              View Complete Panels Catalog <ArrowRight className="w-4 h-4 text-cyan-400" />
             </button>
           </div>
 
@@ -507,8 +487,8 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
       </section>
 
       {/* Machinery & In-House Testing Power */}
-      <section className="py-16 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-14 bg-slate-900 text-white border-b border-slate-800">
+        <div className="container-versatile">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content */}
@@ -578,10 +558,6 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
                     <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <span>200 MΩ 5KV IR Testers, Phase Sequence & Thermal Imager Scans</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span>Precision Vernier Callipers, Micrometres & Dye Penetration Kits</span>
-                  </div>
                 </div>
               </div>
 
@@ -596,99 +572,7 @@ export const HomePage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* Turnkey Project Workflow Flowchart Section */}
-      <section className="py-16 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-              Process Excellence
-            </span>
-            <h3 className="text-3xl font-bold text-slate-900 font-serif mt-2">
-              Turnkey Project Processing Flowchart
-            </h3>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
-              Systematic 10-step project execution lifecycle from tender collection to final commissioning and user training.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-            {projectProcessingFlowchart.map((fc, idx) => (
-              <div key={idx} className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5 hover:border-grace-primary hover:bg-blue-50/50 transition-all group">
-                <div className="text-xs font-mono font-bold text-grace-primary group-hover:scale-110 transition-transform">
-                  STEP {fc.step}
-                </div>
-                <div className="text-xs font-bold text-slate-900 font-serif leading-tight">
-                  {fc.stage}
-                </div>
-                <div className="text-[11px] text-slate-500 leading-snug">
-                  {fc.desc}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ongoing & Completed Key Projects Showcase */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          
-          <div className="mb-10 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-white border border-slate-200 px-3 py-1 rounded-full shadow-xs">
-              Proven Performance
-            </span>
-            <h3 className="text-3xl font-bold text-slate-900 font-serif mt-2">
-              Ongoing & Completed Key Projects
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Ongoing Projects Box */}
-            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-4">
-              <h4 className="text-lg font-bold text-slate-900 font-serif flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Ongoing Commercial & Industrial Projects
-              </h4>
-              <div className="space-y-2 text-xs font-semibold text-slate-800">
-                {ongoingProjects.commercial.map((p, i) => (
-                  <div key={i} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:bg-blue-50/50 transition-colors">
-                    <span>{p}</span>
-                    <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">ONGOING</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Completed Projects Box */}
-            <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-4">
-              <h4 className="text-lg font-bold text-slate-900 font-serif flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-grace-primary" />
-                Completed Commercial Projects Highlight
-              </h4>
-              <div className="space-y-2 text-xs font-semibold text-slate-800">
-                {completedProjects.commercial.slice(0, 7).map((p, i) => (
-                  <div key={i} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:bg-blue-50/50 transition-colors">
-                    <span>{p}</span>
-                    <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">COMPLETED</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <button
-              onClick={() => onNavigate('gallery')}
-              className="px-6 py-3 bg-slate-900 hover:bg-grace-primary text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-2"
-            >
-              Explore Full Projects & Photo Gallery <ArrowRight className="w-4 h-4 text-cyan-400" />
-            </button>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Our Valued Clients & Channel Partners Marquee on White Background */}
+      {/* Our Valued Clients & Channel Partners Marquee */}
       <ClientLogosMarquee />
 
     </div>

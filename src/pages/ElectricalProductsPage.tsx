@@ -16,7 +16,7 @@ export const ElectricalProductsPage: React.FC<Props> = ({ onOpenInquiry }) => {
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Noida Unit Manufacturing</span>
           <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Electrical Panels & Automation Catalog</h1>
           <p className="text-sm text-slate-400 max-w-2xl mt-2">
@@ -27,7 +27,7 @@ export const ElectricalProductsPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* Search & Filter Bar */}
       <section className="py-6 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container-versatile flex flex-col md:flex-row items-center justify-between gap-4">
           
           <div className="relative w-full md:w-96">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -67,7 +67,7 @@ export const ElectricalProductsPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* Panel Categories Display */}
       <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-14">
+        <div className="container-versatile space-y-14">
           
           {productRangeCategory.map((catGroup, idx) => {
             if (activeCategory !== 'all' && activeCategory !== catGroup.category) return null;

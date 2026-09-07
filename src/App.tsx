@@ -29,7 +29,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans flex flex-col">
+    <div className="min-h-screen bg-white text-slate-800 font-sans flex flex-col overflow-x-hidden w-full">
       <Navbar 
         activePage={activePage}
         onNavigate={handleNavigate}

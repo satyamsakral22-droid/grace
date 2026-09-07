@@ -210,7 +210,7 @@ export const ClientLogosMarquee: React.FC = () => {
       {/* Subtle Tech Grid Pattern Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container-versatile relative z-10">
         
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-10">

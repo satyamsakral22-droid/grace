@@ -26,7 +26,7 @@ export const ContactPage: React.FC = () => {
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Get In Touch</span>
           <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Contact Grace Electrical & Contractors</h1>
           <p className="text-sm text-slate-400 max-w-2xl mt-2">
@@ -37,7 +37,7 @@ export const ContactPage: React.FC = () => {
 
       {/* Main Content Grid */}
       <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left Contact Details & Cards */}

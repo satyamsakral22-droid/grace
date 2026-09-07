@@ -11,7 +11,7 @@ interface Props {
 export const ConceptLabel: React.FC<Props> = ({ conceptId, title, subtitle, highlights }) => {
   return (
     <div className="bg-slate-900 text-white border-y border-slate-800 py-3 px-4 sm:px-6 shadow-md">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
+      <div className="w-full px-4 sm:px-8 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
           <span className="px-2.5 py-1 bg-grace-primary text-white font-bold rounded text-[11px] tracking-wide uppercase flex items-center gap-1.5 shadow-sm">
             <Sparkles className="w-3.5 h-3.5" /> Concept {conceptId}

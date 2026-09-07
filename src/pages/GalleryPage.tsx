@@ -15,7 +15,7 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Media & Leadership</span>
           <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Director & Team Showcase Gallery</h1>
           <p className="text-sm text-slate-400 max-w-2xl mt-2">
@@ -26,7 +26,7 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* Gallery Filter Tabs */}
       <section className="py-6 bg-slate-50 border-b border-slate-200 sticky top-16 z-30 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-center gap-3">
+        <div className="container-versatile flex justify-center gap-3">
           <button
             onClick={() => setActiveTab('leadership')}
             className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
@@ -56,7 +56,7 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* Gallery Grid Section */}
       <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           
           {/* Leadership Tab */}
           {activeTab === 'leadership' && (

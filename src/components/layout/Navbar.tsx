@@ -48,34 +48,27 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
   return (
     <>
       {/* Top Executive Information & Hotline Bar */}
-      <div className="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800/80 relative z-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <div className="bg-slate-950 text-slate-300 text-xs py-2 border-b border-slate-800/80 relative z-50">
+        <div className="container-versatile flex items-center justify-between gap-2">
           
-          {/* Left: Certifications & Head Office */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px]">
+          {/* Left: Certifications */}
+          <div className="flex items-center gap-3 text-[11px]">
             <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> ISO 9001:2015 Certified
             </span>
-            <span className="hidden sm:inline text-slate-700">|</span>
-            <span className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors">
+            <span className="hidden md:flex items-center gap-1 text-slate-300 hover:text-white transition-colors">
               <MapPin className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
               <span>Head Office: Sector 65, Noida | Plant: Greater Noida</span>
             </span>
           </div>
 
-          {/* Right: Hotline, Email & Social Links */}
-          <div className="flex items-center gap-4 text-[11px]">
-            <a href={`tel:${companyData.landlines[0]}`} className="hidden lg:flex items-center gap-1.5 hover:text-cyan-300 transition-colors font-semibold">
-              <Phone className="w-3.5 h-3.5 text-cyan-400" /> {companyData.landlines[0]}
-            </a>
+          {/* Right: Phone & Social Links */}
+          <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
             <a href={`tel:${companyData.phones[0]}`} className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors font-semibold">
               <Phone className="w-3.5 h-3.5 text-emerald-400" /> {companyData.phones[0]}
             </a>
-            <a href={`mailto:${companyData.emails[0]}`} className="hidden sm:flex items-center gap-1.5 hover:text-cyan-300 transition-colors">
-              <Mail className="w-3.5 h-3.5 text-cyan-400" /> {companyData.emails[0]}
-            </a>
             
-            <div className="flex items-center gap-2 pl-3 border-l border-slate-800">
+            <div className="flex items-center gap-2">
               <a 
                 href={companyData.socialLinks.linkedin} 
                 target="_blank" 
@@ -100,13 +93,12 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
         </div>
       </div>
 
-      {/* Main Corporate Dropdown Header */}
       <header className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled 
           ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-md py-2.5' 
           : 'bg-white border-b border-slate-200/70 shadow-xs py-3.5'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <div className="container-versatile flex items-center justify-between">
           
           {/* Brand Identity Emblem */}
           <button 
@@ -189,7 +181,7 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
                         <Building2 className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 group-hover:text-grace-primary transition-colors">About Company & History</div>
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-grace-primary transition-colors">About Us</div>
                         <div className="text-[10px] text-slate-500 font-medium leading-tight">18+ Years Inception (2008) in Noida</div>
                       </div>
                     </button>

@@ -12,7 +12,7 @@ interface Props {
 export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
   return (
     <footer className="bg-slate-950 text-slate-400 py-14 text-xs border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container-versatile grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Col 1: Corporate Profile */}
         <div className="space-y-4">
@@ -133,7 +133,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
 
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 mt-10 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-500 gap-2">
+      <div className="container-versatile pt-8 mt-10 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-500 gap-2">
         <div>© 2026 {companyData.name}. All rights reserved.</div>
         <div className="font-mono text-slate-400">Website: www.gracemep.com</div>
       </div>

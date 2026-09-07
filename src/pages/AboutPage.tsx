@@ -31,7 +31,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-950 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-2">
             <ShieldCheck className="w-3.5 h-3.5" /> Authentic Corporate Credentials (PDF & Official Site)
           </div>
@@ -46,7 +46,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
 
       {/* Sub-Navigation Tabs Bar */}
       <section className="sticky top-[69px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto py-3 no-scrollbar text-xs font-bold">
             
             <button
@@ -58,7 +58,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
               }`}
             >
               <Building2 className="w-4 h-4" />
-              <span>About Company & History</span>
+              <span>About Us</span>
             </button>
 
             <button
@@ -104,7 +104,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
       {/* TAB 1: About Company & History */}
       {selectedTab === 'history' && (
         <section className="py-14 bg-white animate-in fade-in duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="container-versatile">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
               <div className="lg:col-span-7 space-y-6">
@@ -116,7 +116,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
                 </h2>
                 
                 <div className="space-y-4 text-slate-700 text-xs sm:text-sm leading-relaxed font-medium bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <p className="border-l-4 border-grace-primary pl-4">
+                  <p className="bg-blue-50/60 p-4 rounded-xl text-slate-800 font-semibold">
                     {classNameAboutInfo.aboutText1}
                   </p>
                   <p>
@@ -179,7 +179,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
       {/* TAB 2: Vision, Mission & Policies */}
       {selectedTab === 'vision' && (
         <section className="py-14 bg-slate-50 animate-in fade-in duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="container-versatile space-y-12">
             
             {/* Vision, Mission, Values Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -260,7 +260,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
       {/* TAB 3: Team & Manpower Breakdown */}
       {selectedTab === 'team' && (
         <section className="py-14 bg-white animate-in fade-in duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+          <div className="container-versatile space-y-8">
             <div>
               <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
                 Human Resource Capacity
@@ -280,24 +280,26 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
                   <span>(A) Technical Project Execution Staff</span>
                   <span className="bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded text-[10px]">Page 23 PDF</span>
                 </div>
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                    <tr>
-                      <th className="p-3.5">Designation</th>
-                      <th className="p-3.5 text-center">Count</th>
-                      <th className="p-3.5">Qualification & Experience</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {teamBreakdown.technical.map((t, i) => (
-                      <tr key={i} className="hover:bg-slate-50">
-                        <td className="p-3.5 font-bold text-slate-900">{t.title}</td>
-                        <td className="p-3.5 text-center font-mono font-extrabold text-grace-primary bg-blue-50/50">{t.count}</td>
-                        <td className="p-3.5 text-slate-600 font-medium">{t.qualification}</td>
+                <div className="overflow-x-auto w-full">
+                  <table className="w-full text-left text-xs min-w-[500px]">
+                    <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                      <tr>
+                        <th className="p-3.5">Designation</th>
+                        <th className="p-3.5 text-center">Count</th>
+                        <th className="p-3.5">Qualification & Experience</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {teamBreakdown.technical.map((t, i) => (
+                        <tr key={i} className="hover:bg-slate-50">
+                          <td className="p-3.5 font-bold text-slate-900">{t.title}</td>
+                          <td className="p-3.5 text-center font-mono font-extrabold text-grace-primary bg-blue-50/50">{t.count}</td>
+                          <td className="p-3.5 text-slate-600 font-medium">{t.qualification}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* Official Team Table */}
@@ -306,24 +308,26 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
                   <span>(B) Official Admin & Commercial Staff</span>
                   <span className="bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded text-[10px]">Page 23 PDF</span>
                 </div>
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                    <tr>
-                      <th className="p-3.5">Designation</th>
-                      <th className="p-3.5 text-center">Count</th>
-                      <th className="p-3.5">Qualification & Experience</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {teamBreakdown.official.map((o, i) => (
-                      <tr key={i} className="hover:bg-slate-50">
-                        <td className="p-3.5 font-bold text-slate-900">{o.title}</td>
-                        <td className="p-3.5 text-center font-mono font-extrabold text-grace-primary bg-blue-50/50">{o.count}</td>
-                        <td className="p-3.5 text-slate-600 font-medium">{o.qualification}</td>
+                <div className="overflow-x-auto w-full">
+                  <table className="w-full text-left text-xs min-w-[500px]">
+                    <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                      <tr>
+                        <th className="p-3.5">Designation</th>
+                        <th className="p-3.5 text-center">Count</th>
+                        <th className="p-3.5">Qualification & Experience</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {teamBreakdown.official.map((o, i) => (
+                        <tr key={i} className="hover:bg-slate-50">
+                          <td className="p-3.5 font-bold text-slate-900">{o.title}</td>
+                          <td className="p-3.5 text-center font-mono font-extrabold text-grace-primary bg-blue-50/50">{o.count}</td>
+                          <td className="p-3.5 text-slate-600 font-medium">{o.qualification}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -333,7 +337,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
       {/* TAB 4: Certifications & Approvals (PHOTO PLACEHOLDERS SECTION) */}
       {selectedTab === 'certifications' && (
         <section className="py-14 bg-amber-50/30 animate-in fade-in duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+          <div className="container-versatile space-y-10">
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-amber-200/80 pb-6">
               <div>

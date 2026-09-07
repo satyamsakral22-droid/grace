@@ -15,7 +15,7 @@ export const MechanicalManufacturingPage: React.FC<Props> = ({ onOpenInquiry }) 
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Surajpur Site-5 Plant, Greater Noida</span>
           <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Mechanical Manufacturing & Testing Strength</h1>
           <p className="text-sm text-slate-400 max-w-2xl mt-2">
@@ -26,7 +26,7 @@ export const MechanicalManufacturingPage: React.FC<Props> = ({ onOpenInquiry }) 
 
       {/* Machinery Strength List (32 Items from PDF) */}
       <section className="py-14 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
             <div>
@@ -58,7 +58,7 @@ export const MechanicalManufacturingPage: React.FC<Props> = ({ onOpenInquiry }) 
 
       {/* Powder Coating Process */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-4">
@@ -92,7 +92,7 @@ export const MechanicalManufacturingPage: React.FC<Props> = ({ onOpenInquiry }) 
 
       {/* Testing Strength (14 Items from PDF) */}
       <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="mb-10">
             <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full">
               In-House Quality Control

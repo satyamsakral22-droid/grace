@@ -15,7 +15,7 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
       
       {/* Header Banner */}
       <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Turnkey Contracting</span>
           <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Electrical & MEPF Engineering Services</h1>
           <p className="text-sm text-slate-400 max-w-2xl mt-2">
@@ -26,7 +26,7 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* Electrical Turnkey Services */}
       <section className="py-14 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="mb-10">
             <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-grace-light px-3 py-1 rounded-full">
               Up to 33 KV Capability
@@ -67,7 +67,7 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* MEPF Engineering Section */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="mb-10">
             <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full">
               Comprehensive MEPF
@@ -108,7 +108,7 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
 
       {/* 10-Stage Project Processing Flowchart */}
       <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="container-versatile">
           <div className="mb-10">
             <span className="text-xs font-mono font-bold text-grace-primary uppercase tracking-widest">Quality Execution Cycle</span>
             <h2 className="text-3xl font-bold text-slate-900 font-serif mt-1">Flow Chart (Project Processing)</h2>
