@@ -23,9 +23,4 @@ __pycache__/
 .vscode/
 .idea/
 
-# Uploaded Media Files (Ignore in Git)
-public/main/*
-!public/main/.gitkeep
-public/factory/*
-!public/factory/.gitkeep
 
