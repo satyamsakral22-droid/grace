@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { companyData, classNameAboutInfo, teamBreakdown } from '../data/graceData';
 import { ImagePlaceholder } from '../components/shared/ImagePlaceholder';
+import { motion } from 'framer-motion';
 
 interface Props {
   activeTab?: string;
@@ -30,16 +31,19 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
     <div className="min-h-screen bg-white text-slate-800 font-sans pb-16">
       
       {/* Header Banner */}
-      <section className="py-12 bg-slate-950 text-white border-b border-slate-800">
-        <div className="container-versatile">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-2">
-            <ShieldCheck className="w-3.5 h-3.5" /> Authentic Corporate Credentials (PDF & Official Site)
+      <section className="py-10 sm:py-12 bg-slate-950 text-white border-b border-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-20 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-grace-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="container-versatile relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 badge-premium rounded-full text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3">
+            <ShieldCheck className="w-3.5 h-3.5" /> ISO 9001:2015 Certified | Est. 2008
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">
-            Grace Electrical & Contractors Pvt. Ltd.
+          <h1 className="text-2xl sm:text-4xl font-black font-serif text-white mt-1 tracking-tight leading-tight">
+            Grace Electrical &<br className="hidden sm:block" />
+            Contractors Pvt. Ltd.
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-3xl mt-2 leading-relaxed font-medium">
-            Established in 2008 in Noida. Capturing 18+ years of engineering leadership across India in turnkey 33KV substations, electrical panel manufacturing, MEPF engineering, and railway coach stock.
+          <p className="text-xs sm:text-sm text-slate-400 max-w-3xl mt-2.5 leading-relaxed font-medium">
+            18+ years of engineering leadership across India — Turnkey 33KV Substations, LT/HT Panel Manufacturing, Comprehensive MEPF Engineering, and Indian Railways Products from our Noida base since 2008.
           </p>
         </div>
       </section>
@@ -103,7 +107,12 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
 
       {/* TAB 1: About Company & History */}
       {selectedTab === 'history' && (
-        <section className="py-14 bg-white animate-in fade-in duration-300">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-10 sm:py-12 bg-white"
+        >
           <div className="container-versatile">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
@@ -111,7 +120,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-grace-primary border border-blue-200 rounded-full text-xs font-bold uppercase tracking-wider">
                   <Building2 className="w-3.5 h-3.5" /> 18+ Years Inception (Since 2008)
                 </div>
-                <h2 className="text-3xl font-bold text-slate-900 font-serif">
+                <h2 className="text-2xl font-bold text-slate-900 font-serif">
                   Corporate Profile & Engineering Legacy
                 </h2>
                 
@@ -173,12 +182,17 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
 
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* TAB 2: Vision, Mission & Policies */}
       {selectedTab === 'vision' && (
-        <section className="py-14 bg-slate-50 animate-in fade-in duration-300">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-10 sm:py-12 bg-slate-50"
+        >
           <div className="container-versatile space-y-12">
             
             {/* Vision, Mission, Values Cards */}
@@ -254,22 +268,27 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
             </div>
 
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* TAB 3: Team & Manpower Breakdown */}
       {selectedTab === 'team' && (
-        <section className="py-14 bg-white animate-in fade-in duration-300">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-10 sm:py-12 bg-white"
+        >
           <div className="container-versatile space-y-8">
             <div>
-              <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
                 Human Resource Capacity
               </span>
-              <h3 className="text-3xl font-bold text-slate-900 font-serif mt-2">
-                50+ Technical & Administrative Team Breakdown
+              <h3 className="text-2xl font-bold text-slate-900 font-serif mt-2">
+                50+ Technical & Administrative Team
               </h3>
               <p className="text-xs text-slate-600 mt-1 max-w-2xl">
-                Extracted directly from Page 23 of Grace Profile 2026. Skilled engineers, project managers, supervisors, and administrative personnel deployed across India.
+                Skilled engineers, project managers, supervisors, and administrative personnel deployed across Grace Electrical & Contractors Pvt. Ltd. sites pan-India.
               </p>
             </div>
 
@@ -278,7 +297,6 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
               <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                 <div className="bg-slate-900 text-white px-5 py-3.5 font-bold text-xs uppercase font-serif flex items-center justify-between">
                   <span>(A) Technical Project Execution Staff</span>
-                  <span className="bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded text-[10px]">Page 23 PDF</span>
                 </div>
                 <div className="overflow-x-auto w-full">
                   <table className="w-full text-left text-xs min-w-[500px]">
@@ -306,7 +324,6 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
               <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                 <div className="bg-slate-900 text-white px-5 py-3.5 font-bold text-xs uppercase font-serif flex items-center justify-between">
                   <span>(B) Official Admin & Commercial Staff</span>
-                  <span className="bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded text-[10px]">Page 23 PDF</span>
                 </div>
                 <div className="overflow-x-auto w-full">
                   <table className="w-full text-left text-xs min-w-[500px]">
@@ -331,12 +348,17 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* TAB 4: Certifications & Approvals (PHOTO PLACEHOLDERS SECTION) */}
       {selectedTab === 'certifications' && (
-        <section className="py-14 bg-amber-50/30 animate-in fade-in duration-300">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="py-10 sm:py-12 bg-amber-50/30"
+        >
           <div className="container-versatile space-y-10">
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-amber-200/80 pb-6">
@@ -515,7 +537,7 @@ export const AboutPage: React.FC<Props> = ({ activeTab, onOpenInquiry }) => {
 
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
 
     </div>

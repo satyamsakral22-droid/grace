@@ -10,6 +10,8 @@ dist-ssr
 *.log
 pdf_text.txt
 pdf_text_dump.txt
+__pycache__/
+*.pyc
 
 # Editor / OS files
 .DS_Store
@@ -20,3 +22,10 @@ pdf_text_dump.txt
 *.sw?
 .vscode/
 .idea/
+
+# Uploaded Media Files (Ignore in Git)
+public/main/*
+!public/main/.gitkeep
+public/factory/*
+!public/factory/.gitkeep
+

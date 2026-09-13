@@ -106,8 +106,8 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             className="flex items-center gap-3 text-left group focus:outline-none"
           >
             <div className="relative">
-              <div className="w-11 h-11 bg-gradient-to-br from-slate-950 via-grace-navy to-grace-primary rounded-xl flex items-center justify-center text-white font-black text-lg shadow-md border border-cyan-400/30 group-hover:scale-105 transition-transform duration-300">
-                <span className="bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">GEC</span>
+              <div className="w-11 h-11 bg-gradient-to-br from-slate-950 via-grace-navy to-grace-primary rounded-xl flex items-center justify-center text-white font-black text-sm shadow-md border border-grace-primary/40 group-hover:scale-105 transition-transform duration-300">
+                <span className="text-gradient-white font-black">GEC</span>
               </div>
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -116,11 +116,13 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             </div>
 
             <div className="flex flex-col justify-center">
-              <h1 className="text-xl sm:text-2xl font-black text-slate-900 font-serif tracking-wide leading-none group-hover:text-grace-primary transition-colors">
-                GRACE
-              </h1>
-              <p className="text-[9px] sm:text-[10px] font-extrabold text-slate-600 uppercase tracking-wider mt-1 leading-none">
-                ELECTRICAL & CONTRACTORS PRIVATE LIMITED
+              <div className="flex items-baseline gap-1.5 leading-none">
+                <span className="text-xl sm:text-2xl font-black text-slate-900 font-serif tracking-wide group-hover:text-grace-primary transition-colors">
+                  GRACE
+                </span>
+              </div>
+              <p className="text-[8px] sm:text-[9px] font-extrabold text-slate-500 uppercase tracking-widest mt-0.5 leading-none">
+                ELECTRICAL & CONTRACTORS PVT. LTD.
               </p>
             </div>
           </button>
@@ -353,7 +355,22 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </button>
 
-            {/* 6. Contact Us */}
+            {/* 6. FAQs */}
+            <button
+              onClick={() => handleNavClick('faq')}
+              className={`py-2 px-1 transition-all relative whitespace-nowrap ${
+                activePage === 'faq' 
+                  ? 'text-grace-primary font-extrabold' 
+                  : 'hover:text-grace-primary'
+              }`}
+            >
+              <span>FAQs</span>
+              {activePage === 'faq' && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-grace-primary to-cyan-500 rounded-full"></span>
+              )}
+            </button>
+
+            {/* 7. Contact Us */}
             <button
               onClick={() => handleNavClick('contact')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -378,14 +395,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             >
               <Download className="w-3.5 h-3.5 text-grace-primary group-hover:translate-y-0.5 transition-transform" />
               <span>Profile PDF</span>
-            </button>
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-grace-primary via-blue-600 to-cyan-600 hover:from-grace-bright hover:to-cyan-500 text-white text-xs font-extrabold shadow-md hover:shadow-cyan-500/20 transition-all flex items-center gap-2 group"
-            >
-              <span>Reach Us</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
@@ -505,6 +514,16 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               </button>
 
               <button
+                onClick={() => handleNavClick('faq')}
+                className={`w-full text-left py-3 px-3.5 rounded-xl flex items-center justify-between ${
+                  activePage === 'faq' ? 'bg-grace-primary text-white' : 'text-slate-800 hover:bg-slate-50'
+                }`}
+              >
+                <span>Frequently Asked Questions (FAQs)</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+
+              <button
                 onClick={() => handleNavClick('contact')}
                 className={`w-full text-left py-3 px-3.5 rounded-xl flex items-center justify-between ${
                   activePage === 'contact' ? 'bg-grace-primary text-white' : 'text-slate-800 hover:bg-slate-50'
@@ -521,13 +540,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
                 className="w-full py-3 rounded-xl border border-slate-300 text-slate-900 hover:bg-slate-50 flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4 text-grace-primary" /> Download Company Profile PDF
-              </button>
-              <button
-                onClick={() => { setMobileMenuOpen(false); handleNavClick('contact'); }}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-grace-primary to-cyan-600 text-white shadow-md flex items-center justify-center gap-2"
-              >
-                <span>Reach Us / Contact Us</span>
-                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 

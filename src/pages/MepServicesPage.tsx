@@ -14,24 +14,24 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
     <div className="min-h-screen bg-white text-slate-800 font-sans pb-16">
       
       {/* Header Banner */}
-      <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
+      <section className="py-10 sm:py-12 bg-slate-900 text-white border-b border-slate-800">
         <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Turnkey Contracting</span>
-          <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Electrical & MEPF Engineering Services</h1>
-          <p className="text-sm text-slate-400 max-w-2xl mt-2">
+          <h1 className="text-2xl sm:text-4xl font-black font-serif text-white mt-1">Electrical & MEPF Engineering Services</h1>
+          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">
             Grace Group undertakes complete turnkey contracts of Supply, Installation, Testing & Commissioning for 33KV Substations, Electrical, Fire Fighting, Plumbing, HVAC, and Mechanical systems.
           </p>
         </div>
       </section>
 
       {/* Electrical Turnkey Services */}
-      <section className="py-14 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-12 bg-white border-b border-slate-200">
         <div className="container-versatile">
-          <div className="mb-10">
+          <div className="mb-7">
             <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-grace-light px-3 py-1 rounded-full">
               Up to 33 KV Capability
             </span>
-            <h2 className="text-3xl font-bold text-slate-900 font-serif mt-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-serif mt-1.5">
               Turnkey Electrical Contracting Services
             </h2>
           </div>
@@ -66,37 +66,37 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
       </section>
 
       {/* MEPF Engineering Section */}
-      <section className="py-14 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-12 bg-slate-50 border-b border-slate-200">
         <div className="container-versatile">
-          <div className="mb-10">
+          <div className="mb-7">
             <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full">
               Comprehensive MEPF
             </span>
-            <h2 className="text-3xl font-bold text-slate-900 font-serif mt-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-serif mt-1.5">
               Mechanical, Fire Fighting & Plumbing Solutions
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {mepfServices.map((mep, idx) => (
-              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                   <ImagePlaceholder 
                     label={`Placeholder: ${mep.title}`}
-                    height="h-40"
+                    height="h-36"
                     category="MEPF Image Placeholder"
                   />
-                  <div className="mt-4">
-                    <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded">
+                  <div className="mt-3.5">
+                    <span className="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
                       {mep.spec}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900 mt-2">{mep.title}</h3>
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">{mep.description}</p>
+                    <h3 className="text-base font-bold text-slate-900 mt-1.5">{mep.title}</h3>
+                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{mep.description}</p>
                   </div>
                 </div>
 
                 <button
-                  className="mt-6 w-full py-2.5 bg-slate-100 hover:bg-slate-900 hover:text-white border border-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-all"
+                  className="mt-5 w-full py-2 bg-slate-100 hover:bg-slate-900 hover:text-white border border-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-all"
                 >
                   View Service Details
                 </button>
@@ -107,11 +107,11 @@ export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
       </section>
 
       {/* 10-Stage Project Processing Flowchart */}
-      <section className="py-14 bg-white">
+      <section className="py-10 sm:py-12 bg-white">
         <div className="container-versatile">
-          <div className="mb-10">
+          <div className="mb-7">
             <span className="text-xs font-mono font-bold text-grace-primary uppercase tracking-widest">Quality Execution Cycle</span>
-            <h2 className="text-3xl font-bold text-slate-900 font-serif mt-1">Flow Chart (Project Processing)</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-serif mt-1">Flow Chart (Project Processing)</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">

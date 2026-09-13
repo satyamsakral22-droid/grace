@@ -25,26 +25,26 @@ export const ContactPage: React.FC = () => {
     <div className="min-h-screen bg-white text-slate-800 font-sans pb-16">
       
       {/* Header Banner */}
-      <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
+      <section className="py-10 sm:py-12 bg-slate-900 text-white border-b border-slate-800">
         <div className="container-versatile">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Get In Touch</span>
-          <h1 className="text-3xl sm:text-5xl font-black font-serif text-white mt-1">Contact Grace Electrical & Contractors</h1>
-          <p className="text-sm text-slate-400 max-w-2xl mt-2">
+          <h1 className="text-2xl sm:text-4xl font-black font-serif text-white mt-1">Contact Grace Electrical & Contractors Pvt. Ltd.</h1>
+          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">
             Reach out to our corporate office in Noida or manufacturing plant in Greater Noida for project inquiries, technical specifications, or tender submissions.
           </p>
         </div>
       </section>
 
       {/* Main Content Grid */}
-      <section className="py-14 bg-white">
+      <section className="py-10 sm:py-12 bg-white">
         <div className="container-versatile">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             
             {/* Left Contact Details & Cards */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-5">
               
               {/* Head Office Card */}
-              <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 shadow-sm hover:shadow-md transition-shadow">
+              <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-2.5 shadow-xs hover:shadow-sm transition-shadow">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-blue-50 px-2.5 py-1 rounded">
                     Head Office
@@ -180,7 +180,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Right Contact Form */}
             <div className="lg:col-span-7">
-              <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-8 shadow-md space-y-5">
                 <div>
                   <span className="text-xs font-bold text-grace-primary uppercase tracking-widest bg-grace-light px-3 py-1 rounded-full">
                     Online Inquiry

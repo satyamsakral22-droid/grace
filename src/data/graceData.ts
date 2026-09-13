@@ -242,7 +242,7 @@ export const projectProcessingFlowchart = [
   { step: "10", stage: "Handing Over & Customer Service", desc: "User training, general maintenance instruction, fault finding support & handing over" }
 ];
 
-// Team Breakdown from Page 23 of PDF
+// Team Breakdown
 export const teamBreakdown = {
   technical: [
     { title: "Project Incharge", count: 1, qualification: "B.Tech / Graduate Engg. With experience" },
