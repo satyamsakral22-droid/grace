@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  MessageSquare, Search, ChevronDown, Phone, Mail, FileText, 
-  ArrowRight, ShieldCheck, Zap, Factory, Award, Download, 
-  CheckCircle2, HelpCircle, Layers
+import {
+  MessageSquare, Search, ChevronDown, Phone, Mail, FileText,
+  ArrowRight, ShieldCheck, Zap, Factory, Award, Download,
+  CheckCircle2, HelpCircle, Layers, Wrench, Train, Clock, Cpu,
+  PhoneCall, Sparkles, Filter
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { faqs, categoryColors, FaqItem } from '../components/shared/FaqSection';
@@ -15,7 +16,7 @@ interface Props {
 export const FaqPage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
+  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
 
   const categories = useMemo(() => {
     const cats = Array.from(new Set(faqs.map(f => f.category)));
@@ -26,42 +27,65 @@ export const FaqPage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
     return faqs.filter(faq => {
       const matchesCat = activeCategory === 'All' || faq.category === activeCategory;
       const q = searchQuery.toLowerCase().trim();
-      const matchesSearch = !q || 
-        faq.question.toLowerCase().includes(q) || 
-        faq.answer.toLowerCase().includes(q) || 
-        faq.category.toLowerCase().includes(q);
+      const matchesSearch = !q ||
+        faq.question.toLowerCase().includes(q) ||
+        faq.answer.toLowerCase().includes(q) ||
+        faq.category.toLowerCase().includes(q) ||
+        faq.badge.toLowerCase().includes(q) ||
+        faq.keyPoints.some(kp => kp.toLowerCase().includes(q));
       return matchesCat && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
 
-  const toggle = (index: number) => {
-    setOpenIndex(prev => (prev === index ? null : index));
+  const toggle = (id: string) => {
+    setOpenId(prev => (prev === id ? null : id));
+  };
+
+  const handleAction = (faq: FaqItem) => {
+    if (!faq.action) return;
+    if (faq.action.inquirySubject && onOpenInquiry) {
+      onOpenInquiry(faq.action.inquirySubject);
+    } else if (faq.action.page && onNavigate) {
+      onNavigate(faq.action.page);
+    } else if (onNavigate) {
+      onNavigate('contact');
+    }
+  };
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "Turnkey 33KV & EPC": return <Zap className="w-3.5 h-3.5" />;
+      case "Panel Manufacturing": return <Cpu className="w-3.5 h-3.5" />;
+      case "Testing & Quality": return <ShieldCheck className="w-3.5 h-3.5" />;
+      case "Railway Products": return <Train className="w-3.5 h-3.5" />;
+      case "Commercial & Tenders": return <FileText className="w-3.5 h-3.5" />;
+      default: return <Layers className="w-3.5 h-3.5" />;
+    }
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white font-sans overflow-x-hidden">
-      
-      {/* ── Page Header / Banner ────────────────────────────── */}
-      <section className="relative py-10 sm:py-12 bg-slate-950 overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-grace-primary/15 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-slate-950 text-white font-sans overflow-x-hidden pb-16">
 
-        <div className="container-versatile relative z-10 text-center max-w-5xl mx-auto">
+      <section className="relative py-14 sm:py-20 bg-slate-950 overflow-hidden border-b border-slate-800/80">
+        <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-grace-primary/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container-versatile relative z-10 text-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 badge-premium rounded-full text-xs font-bold uppercase tracking-widest text-cyan-400 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 badge-premium rounded-full text-xs font-bold uppercase tracking-widest text-cyan-400 mb-4 shadow-lg shadow-cyan-500/10"
           >
             <HelpCircle className="w-4 h-4 text-cyan-400" />
-            Knowledge Base & Technical FAQs
+            Engineering Knowledge Base & Technical FAQs
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-2xl sm:text-4xl lg:text-[2.8rem] font-black font-serif text-white tracking-tight leading-tight"
+            className="text-3xl sm:text-5xl lg:text-[3.2rem] font-black font-serif text-white tracking-tight leading-tight"
           >
             Frequently Asked <span className="text-gradient-blue">Questions</span>
           </motion.h1>
@@ -70,140 +94,232 @@ export const FaqPage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-slate-400 text-xs sm:text-sm mt-3 max-w-2xl mx-auto font-medium leading-relaxed"
+            className="text-slate-400 text-xs sm:text-base mt-4 max-w-2xl mx-auto font-medium leading-relaxed"
           >
-            Detailed answers regarding our turnkey 33KV contracting, LT/HT panel fabrication range, ISO 9001:2015 certifications, execution timelines, and tender process.
+            Technical answers on our turnkey 33KV substation scope, in-house panel fabrication capabilities, 5KV Hi-Pot testing benchmarks, ISO 9001:2015 certifications, and tender submission process.
           </motion.p>
 
-          {/* Search bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-6 max-w-xl mx-auto relative"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 max-w-2xl mx-auto"
+          >
+            {[
+              { value: "33 KV", label: "Turnkey Substations" },
+              { value: "6300A", label: "PCC Panel Rating" },
+              { value: "5 KV", label: "Hi-Pot Testing" },
+              { value: "24 Hrs", label: "Bid Response" }
+            ].map((stat, i) => (
+              <div key={i} className="p-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md">
+                <div className="text-base sm:text-lg font-black font-serif text-cyan-400">{stat.value}</div>
+                <div className="text-[11px] text-slate-400 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-8 max-w-2xl mx-auto relative"
           >
             <Search className="w-4 h-4 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by topic, e.g. 33KV, PCC Panels, Quotation, Noida..."
-              className="w-full pl-11 pr-4 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-md backdrop-blur-md"
+              placeholder="Search by keyword, e.g. 33KV, PCC, 6300A, Testing, VCB, AMC, Quotation..."
+              className="w-full pl-11 pr-24 py-3.5 bg-slate-900/90 border border-slate-700/80 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-xl backdrop-blur-md"
             />
-            {searchQuery && (
+            {searchQuery ? (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[11px] text-slate-400 hover:text-white bg-slate-800 px-2 py-0.5 rounded-md"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-white bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 transition-colors"
               >
                 Clear
               </button>
+            ) : (
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-slate-500 font-semibold uppercase tracking-wider hidden sm:inline">
+                {filteredFaqs.length} Items
+              </span>
             )}
           </motion.div>
         </div>
       </section>
 
-      {/* ── Category Filter Pills ───────────────────────────── */}
-      <section className="py-4 bg-slate-900/70 border-b border-slate-800 sticky top-16 z-30 backdrop-blur-lg">
+      <section className="py-4 bg-slate-900/80 border-b border-slate-800/80 sticky top-16 z-30 backdrop-blur-xl">
         <div className="container-versatile">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
             <span className="text-xs font-bold text-slate-500 flex items-center gap-1.5 mr-2 flex-shrink-0">
-              <Layers className="w-3.5 h-3.5 text-cyan-400" /> Categories:
+              <Filter className="w-3.5 h-3.5 text-cyan-400" /> Filter Topic:
             </span>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex-shrink-0 cursor-pointer ${
-                  activeCategory === cat
-                    ? 'bg-grace-primary text-white shadow-md shadow-grace-primary/30'
-                    : 'bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const count = cat === 'All' ? faqs.length : faqs.filter(f => f.category === cat).length;
+              const isActive = activeCategory === cat;
+
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                    isActive
+                      ? 'bg-gradient-to-r from-grace-primary to-cyan-600 text-white shadow-lg shadow-grace-primary/30'
+                      : 'bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
+                  }`}
+                >
+                  {getCategoryIcon(cat)}
+                  <span>{cat}</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-400'
+                  }`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── Accordion List ──────────────────────────────────── */}
-      <section className="py-10 sm:py-12 bg-slate-950 relative">
+      <section className="py-12 sm:py-16 bg-slate-950 relative">
         <div className="container-versatile max-w-5xl">
 
-          {filteredFaqs.length === 0 ? (
-            <div className="text-center py-16 bg-slate-900/40 rounded-3xl border border-slate-800 p-8">
-              <HelpCircle className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">No matching questions found</h3>
-              <p className="text-sm text-slate-400 mb-6">
-                Try searching with a different term, or contact our engineering team directly.
-              </p>
+          {(searchQuery || activeCategory !== 'All') && (
+            <div className="mb-6 flex items-center justify-between text-xs text-slate-400 bg-slate-900/60 px-4 py-2.5 rounded-xl border border-slate-800">
+              <span>
+                Showing <strong className="text-cyan-400 font-bold">{filteredFaqs.length}</strong> result{filteredFaqs.length === 1 ? '' : 's'}
+                {activeCategory !== 'All' && <span> in <strong className="text-white">{activeCategory}</strong></span>}
+                {searchQuery && <span> matching "<strong className="text-white">{searchQuery}</strong>"</span>}
+              </span>
               <button
                 onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
-                className="btn-primary px-6 py-2.5 rounded-xl text-white text-xs font-bold"
+                className="text-cyan-400 hover:text-cyan-300 font-bold underline cursor-pointer"
               >
-                Reset Search Filters
+                Reset All Filters
               </button>
             </div>
+          )}
+
+          {filteredFaqs.length === 0 ? (
+            <div className="text-center py-20 bg-slate-900/40 rounded-3xl border border-slate-800 p-8">
+              <HelpCircle className="w-14 h-14 text-slate-600 mx-auto mb-4 animate-pulse" />
+              <h3 className="text-xl font-bold font-serif text-white mb-2">No Matching Technical Questions</h3>
+              <p className="text-sm text-slate-400 max-w-md mx-auto mb-6">
+                We couldn't find any questions matching your query. Our engineering team can answer custom specifications directly.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
+                  className="btn-primary px-6 py-2.5 rounded-xl text-white text-xs font-bold"
+                >
+                  Reset Search
+                </button>
+                <button
+                  onClick={() => onOpenInquiry('Custom Technical Inquiry')}
+                  className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700"
+                >
+                  Submit Question to Engineer
+                </button>
+              </div>
+            </div>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-3.5">
               {filteredFaqs.map((faq, idx) => {
-                const isOpen = openIndex === idx;
-                const catColor = categoryColors[faq.category] ?? "text-slate-400 bg-slate-400/10 border-slate-400/20";
+                const isOpen = openId === faq.id;
+                const style = categoryColors[faq.category] || {
+                  badge: "bg-slate-800 text-slate-300 border-slate-700",
+                  text: "text-cyan-400",
+                  bg: "from-slate-800/10 to-slate-900/10",
+                  border: "border-cyan-500/40"
+                };
 
                 return (
                   <motion.div
-                    key={`${faq.category}-${idx}`}
+                    key={faq.id}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: idx * 0.03 }}
-                    className={`rounded-xl border overflow-hidden transition-all duration-300 ${
+                    transition={{ duration: 0.35, delay: idx * 0.04 }}
+                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                       isOpen
-                        ? 'border-grace-primary/60 bg-white/[0.05] shadow-md shadow-grace-primary/10'
-                        : 'border-slate-800/80 bg-white/[0.02] hover:border-slate-700 hover:bg-white/[0.035]'
+                        ? `bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 ${style.border} shadow-xl shadow-grace-primary/10 ring-1 ring-white/10`
+                        : 'bg-slate-900/50 hover:bg-slate-900/80 border-slate-800/80 hover:border-slate-700 backdrop-blur-sm'
                     }`}
                   >
-                    {/* Trigger Button */}
                     <button
                       type="button"
-                      onClick={() => toggle(idx)}
+                      onClick={() => toggle(faq.id)}
                       aria-expanded={isOpen}
-                      className="w-full text-left px-4 sm:px-5 py-3.5 sm:py-4 flex items-center gap-3 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-xl group"
+                      className="w-full text-left p-5 sm:p-6 flex items-center gap-4 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 group"
                     >
-                      <span className={`flex-shrink-0 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border text-[9px] font-bold uppercase tracking-wider ${catColor}`}>
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold border backdrop-blur-md flex-shrink-0 ${style.badge}`}>
                         {faq.icon}
-                        <span>{faq.category}</span>
+                        <span className="hidden sm:inline">{faq.badge}</span>
                       </span>
 
-                      <span className={`flex-1 text-xs sm:text-sm font-bold leading-snug transition-colors duration-200 ${
-                        isOpen ? 'text-cyan-300' : 'text-slate-200 group-hover:text-white'
+                      <span className={`flex-1 text-sm sm:text-base font-bold font-serif leading-snug transition-colors duration-200 ${
+                        isOpen ? 'text-white' : 'text-slate-200 group-hover:text-cyan-300'
                       }`}>
                         {faq.question}
                       </span>
 
-                      <span className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                      {faq.metric && (
+                        <span className="hidden md:flex flex-col items-end flex-shrink-0 text-right pr-2">
+                          <span className={`text-xs font-black font-serif ${style.text}`}>{faq.metric.value}</span>
+                          <span className="text-[10px] text-slate-500 font-medium">{faq.metric.label}</span>
+                        </span>
+                      )}
+
+                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? 'bg-grace-primary text-white rotate-180 shadow-md shadow-grace-primary/30'
-                          : 'bg-slate-900 border border-slate-800 text-slate-400 group-hover:border-slate-700 group-hover:text-slate-200'
+                          ? 'bg-gradient-to-br from-grace-primary to-cyan-500 text-white rotate-180 shadow-md shadow-grace-primary/40'
+                          : 'bg-slate-800/90 text-slate-400 group-hover:text-white group-hover:bg-slate-700 border border-slate-700/60'
                       }`}>
-                        <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300" />
-                      </span>
+                        <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                      </div>
                     </button>
 
-                    {/* Answer Collapsible */}
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
-                          key="answer"
+                          key={`body-${faq.id}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-4 sm:px-5 pt-1 pb-4 sm:pb-5 border-t border-slate-800/60">
-                            <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed">
+                          <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-800/70">
+                            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
                               {faq.answer}
                             </p>
+
+                            {faq.keyPoints && faq.keyPoints.length > 0 && (
+                              <div className="mt-4 pt-4 border-t border-slate-800/60 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                {faq.keyPoints.map((pt, pIdx) => (
+                                  <div key={pIdx} className="flex items-start gap-2.5 text-xs text-slate-300 bg-slate-950/60 p-3 rounded-xl border border-slate-800/70">
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                                    <span className="leading-snug">{pt}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {faq.action && (
+                              <div className="mt-4 pt-3 flex items-center justify-between flex-wrap gap-3">
+                                <span className="text-[11px] text-slate-500 font-medium">
+                                  Want complete specifications or technical drawings?
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => handleAction(faq)}
+                                  className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors group cursor-pointer"
+                                >
+                                  <span>{faq.action.label}</span>
+                                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </motion.div>
                       )}
@@ -214,33 +330,49 @@ export const FaqPage: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             </div>
           )}
 
-          {/* Quick Inquiry RFQ Card */}
-          <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 relative overflow-hidden shadow-xl">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="mt-14 p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-950 border border-slate-800 relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-grace-primary/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
-              <div>
-                <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 mb-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Need Project-Specific Technical Guidance?
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="space-y-2">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-xs font-bold text-emerald-400 mb-1">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" /> Dedicated Technical Tender Support
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black font-serif text-white leading-tight">
-                  Speak Directly with Our Engineering Team
+                <h3 className="text-2xl sm:text-3xl font-black font-serif text-white tracking-tight leading-tight">
+                  Have an Upcoming Project or Tender Requirement?
                 </h3>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1.5 max-w-xl">
-                  Whether you need BOQ estimation, CAD single line diagrams, CPRI type test records, or tender bid assistance — we're here to help.
+                <p className="text-slate-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                  Submit single-line diagrams (SLD), itemized BOQs, or panel specifications for rapid commercial bids. Our technical estimating division responds within 24 to 48 business hours.
                 </p>
+
+                <div className="flex flex-wrap items-center gap-4 pt-3 text-xs text-slate-300 font-medium">
+                  <a href="tel:+919990095954" className="flex items-center gap-2 hover:text-cyan-300 transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-cyan-400" /> +91-9990095954
+                  </a>
+                  <span className="text-slate-700 hidden sm:inline">•</span>
+                  <a href="mailto:info@gracemep.com" className="flex items-center gap-2 hover:text-cyan-300 transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-cyan-400" /> info@gracemep.com
+                  </a>
+                  <span className="text-slate-700 hidden sm:inline">•</span>
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-emerald-400" /> 24hr Business Response
+                  </span>
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 flex-shrink-0 w-full md:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full lg:w-auto">
                 <button
+                  type="button"
                   onClick={() => onNavigate('contact')}
-                  className="btn-primary px-7 py-3.5 rounded-xl text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-grace-primary/30"
+                  className="btn-primary px-8 py-4 rounded-xl text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-grace-primary/40 cursor-pointer"
                 >
-                  Request a Quotation <ArrowRight className="w-4 h-4" />
+                  Request a Formal Quotation <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => onOpenInquiry('Technical FAQ Consultation')}
-                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                  type="button"
+                  onClick={() => onOpenInquiry('Grace Company Profile PDF')}
+                  className="px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-cyan-400" /> Company Profile PDF
                 </button>

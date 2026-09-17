@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { allMedia, mainMedia, factoryMedia, MediaItem } from '../data/galleryData';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ParticleOrbs } from '../components/shared/ParticleOrbs';
 
 interface Props {
   onOpenInquiry: (productName?: string) => void;
@@ -53,7 +54,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
     setSelectedIndex(selectedIndex === filteredMedia.length - 1 ? 0 : selectedIndex + 1);
   }, [selectedIndex, filteredMedia.length]);
 
-  // Keyboard navigation
   useEffect(() => {
     if (!isLightboxOpen) return;
     const handle = (e: KeyboardEvent) => {
@@ -75,10 +75,11 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans">
 
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <section className="relative pt-10 pb-8 overflow-hidden">
-        <div className="absolute inset-0 hero-grid opacity-20 pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-grace-primary/20 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-16 sm:py-20 overflow-hidden gradient-mesh-dark">
+        <ParticleOrbs count={5} />
+        <div className="absolute inset-0 hero-grid opacity-10 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
 
         <div className="container-versatile relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 badge-premium rounded-full text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3">
@@ -91,7 +92,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
             Explore our manufacturing plant in Greater Noida, CNC fabrication processes, substation projects, and completed MEP & Railway installations across India.
           </p>
 
-          {/* Stats badges */}
           <div className="flex flex-wrap gap-3 mt-6">
             {[
               { icon: <Building2 className="w-4 h-4 text-cyan-400" />, label: "Project Photos", count: mainMedia.length },
@@ -111,7 +111,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* ── Factory Video Feature ─────────────────────────────── */}
       <section className="pb-12 border-b border-slate-800">
         <div className="container-versatile">
           <div className="flex items-center gap-3 mb-6">
@@ -138,7 +137,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* ── Tab Filters ──────────────────────────────────────── */}
       <div className="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 py-4">
         <div className="container-versatile">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
@@ -148,7 +146,7 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                 onClick={() => { setActiveTab(tab.id); setDisplayCount(36); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs flex-shrink-0 transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'bg-grace-primary text-white shadow-lg shadow-grace-primary/25'
+                    ? 'bg-gradient-to-r from-grace-primary to-cyan-500 text-white shadow-lg shadow-grace-primary/25'
                     : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-600'
                 }`}
               >
@@ -165,13 +163,12 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
         </div>
       </div>
 
-      {/* ── Masonry Gallery Grid ──────────────────────────────── */}
       <div className="container-versatile py-10">
         <div className="masonry-grid">
           {visibleMedia.map((item, idx) => (
             <div
               key={item.id}
-              className="masonry-item group relative cursor-pointer rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-600 transition-all duration-300 hover:shadow-2xl hover:shadow-black/50"
+              className="masonry-item group relative cursor-pointer rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-400 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-1"
               onClick={() => openLightbox(filteredMedia.indexOf(item))}
             >
               {item.type === 'video' ? (
@@ -182,7 +179,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                     preload="metadata"
                     muted
                   />
-                  {/* Video play overlay */}
                   <div className="absolute inset-0 bg-slate-900/50 group-hover:bg-slate-900/30 transition-colors flex items-center justify-center">
                     <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform border border-white/30">
                       <Play className="w-6 h-6 text-white ml-0.5" />
@@ -218,7 +214,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                       }
                     }}
                   />
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <p className="text-xs font-bold text-white">{item.title}</p>
@@ -236,7 +231,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
           ))}
         </div>
 
-        {/* Load More */}
         {displayCount < filteredMedia.length && (
           <div className="text-center mt-12">
             <button
@@ -249,7 +243,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
         )}
       </div>
 
-      {/* ── Lightbox / Fullscreen Modal ───────────────────────── */}
       <AnimatePresence>
         {isLightboxOpen && activeItem && (
           <motion.div
@@ -260,7 +253,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
             className="fixed inset-0 z-50 lightbox-backdrop flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
-            {/* Content */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -269,7 +261,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
               className="relative max-w-6xl w-full max-h-[92vh] flex flex-col"
               onClick={e => e.stopPropagation()}
             >
-              {/* Close */}
               <button
                 onClick={closeLightbox}
                 className="absolute -top-12 right-0 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center text-white transition-colors z-10"
@@ -277,12 +268,10 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Counter */}
               <div className="absolute -top-12 left-0 text-white/60 text-xs font-mono">
                 {selectedIndex !== null ? selectedIndex + 1 : 0} / {filteredMedia.length}
               </div>
 
-              {/* Media */}
               <div className="rounded-2xl overflow-hidden bg-slate-900 flex-1 flex items-center justify-center">
                 {activeItem.type === 'video' ? (
                   <video
@@ -293,7 +282,7 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                     className="w-full max-h-[80vh] object-contain"
                   />
                 ) : (
-                  <img
+                  <img decoding="async" loading="lazy"
                     key={activeItem.path}
                     src={activeItem.path}
                     alt={activeItem.title}
@@ -302,7 +291,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                 )}
               </div>
 
-              {/* Caption */}
               <div className="mt-3 flex items-center justify-between">
                 <div>
                   <p className="text-white font-bold text-sm">{activeItem.title}</p>
@@ -310,7 +298,6 @@ export const GalleryPage: React.FC<Props> = ({ onOpenInquiry }) => {
                 </div>
               </div>
 
-              {/* Prev / Next */}
               <button
                 onClick={goPrev}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center text-white transition-all"

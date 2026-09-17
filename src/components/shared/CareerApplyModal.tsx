@@ -37,7 +37,6 @@ export const CareerApplyModal: React.FC<Props> = ({ isOpen, onClose, jobTitle = 
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
       <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100">
         
-        {/* Header */}
         <div className="bg-gradient-to-r from-grace-navy via-grace-deep to-grace-primary p-6 text-white flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-cyan-300 bg-white/10 px-2.5 py-1 rounded-full">
@@ -54,7 +53,6 @@ export const CareerApplyModal: React.FC<Props> = ({ isOpen, onClose, jobTitle = 
           </button>
         </div>
 
-        {/* Form Body */}
         <div className="p-6 md:p-8 max-h-[80vh] overflow-y-auto">
           {submitted ? (
             <div className="text-center py-10 space-y-4">
@@ -134,7 +132,6 @@ export const CareerApplyModal: React.FC<Props> = ({ isOpen, onClose, jobTitle = 
                 />
               </div>
 
-              {/* Resume Upload Simulation */}
               <div>
                 <label className="block font-bold text-slate-700 uppercase mb-1">Upload Resume (PDF / DOCX) *</label>
                 <div className="border-2 border-dashed border-slate-300 rounded-xl p-4 text-center bg-slate-50 hover:border-grace-primary transition-colors relative">

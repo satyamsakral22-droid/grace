@@ -27,7 +27,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -47,11 +46,9 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
 
   return (
     <>
-      {/* Top Executive Information & Hotline Bar */}
       <div className="bg-slate-950 text-slate-300 text-xs py-2 border-b border-slate-800/80 relative z-50">
         <div className="container-versatile flex items-center justify-between gap-2">
           
-          {/* Left: Certifications */}
           <div className="flex items-center gap-3 text-[11px]">
             <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> ISO 9001:2015 Certified
@@ -62,7 +59,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             </span>
           </div>
 
-          {/* Right: Phone & Social Links */}
           <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
             <a href={`tel:${companyData.phones[0]}`} className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors font-semibold">
               <Phone className="w-3.5 h-3.5 text-emerald-400" /> {companyData.phones[0]}
@@ -100,7 +96,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
       }`}>
         <div className="container-versatile flex items-center justify-between">
           
-          {/* Brand Identity Emblem */}
           <button 
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-3 text-left group focus:outline-none"
@@ -127,10 +122,8 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             </div>
           </button>
 
-          {/* Desktop Single-Line Navigation Categories (5 Clean Items with Dropdowns) */}
           <nav ref={dropdownRef} className="hidden lg:flex items-center gap-7 text-xs font-bold text-slate-700 relative">
             
-            {/* 1. Home */}
             <button
               onClick={() => handleNavClick('home')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -145,7 +138,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </button>
 
-            {/* 2. Company Profile Dropdown */}
             <div 
               className="relative py-2"
               onMouseEnter={() => setActiveDropdown('about')}
@@ -231,7 +223,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </div>
 
-            {/* 3. Engineering Divisions Dropdown */}
             <div 
               className="relative py-2"
               onMouseEnter={() => setActiveDropdown('divisions')}
@@ -325,7 +316,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </div>
 
-            {/* 4. Media & Gallery */}
             <button
               onClick={() => handleNavClick('gallery')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -340,7 +330,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </button>
 
-            {/* 5. Careers */}
             <button
               onClick={() => handleNavClick('careers')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -355,7 +344,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </button>
 
-            {/* 6. FAQs */}
             <button
               onClick={() => handleNavClick('faq')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -370,7 +358,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
               )}
             </button>
 
-            {/* 7. Contact Us */}
             <button
               onClick={() => handleNavClick('contact')}
               className={`py-2 px-1 transition-all relative whitespace-nowrap ${
@@ -387,7 +374,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
 
           </nav>
 
-          {/* Desktop Action CTAs */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={() => onOpenInquiry('Grace Profile 2026 PDF Request')}
@@ -398,7 +384,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
             </button>
           </div>
 
-          {/* Mobile Drawer Trigger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2.5 text-slate-900 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors"
@@ -409,7 +394,6 @@ export const Navbar: React.FC<Props> = ({ activePage, onNavigate, onOpenInquiry 
 
         </div>
 
-        {/* Mobile Menu Panel */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-5 space-y-3 shadow-xl animate-in slide-in-from-top duration-200">
             

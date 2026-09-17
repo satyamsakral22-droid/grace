@@ -13,13 +13,15 @@ interface Props {
 export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
   return (
     <footer className="bg-slate-950 text-slate-400 relative overflow-hidden">
-      {/* Top gradient line */}
       <div className="divider-industrial" />
 
-      {/* Pre-footer CTA Band */}
-      <div className="bg-gradient-to-r from-grace-primary via-grace-bright to-cyan-600 py-10 relative overflow-hidden">
-        <div className="absolute inset-0 hero-grid opacity-20 pointer-events-none" />
+      <div className="bg-gradient-to-r from-grace-primary via-grace-bright to-cyan-600 py-10 relative overflow-hidden shine-effect">
+        <div className="absolute inset-0 hero-grid opacity-15 pointer-events-none" />
         <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -left-10 -bottom-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-8" aria-hidden="true">
+          <path d="M 0 50% Q 30% 20% 60% 50% T 120% 50%" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" className="circuit-line" />
+        </svg>
         <div className="container-versatile relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
@@ -36,13 +38,13 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <button
                 onClick={() => onNavigate('contact')}
-                className="px-7 py-3.5 bg-white hover:bg-slate-100 text-grace-primary font-black text-sm rounded-xl shadow-lg transition-all flex items-center gap-2 justify-center hover:-translate-y-0.5"
+                className="px-7 py-3.5 bg-white hover:bg-slate-100 text-grace-primary font-black text-sm rounded-xl shadow-lg transition-all flex items-center gap-2 justify-center hover:-translate-y-0.5 ripple-effect"
               >
                 Get a Quotation <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => onOpenInquiry('Grace Company Profile PDF')}
-                className="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-sm rounded-xl transition-all flex items-center gap-2 justify-center"
+                className="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-sm rounded-xl transition-all flex items-center gap-2 justify-center hover:border-white/50"
               >
                 <Download className="w-4 h-4" /> Company Profile
               </button>
@@ -51,11 +53,9 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </div>
 
-      {/* Main footer grid */}
       <div className="py-14 border-b border-slate-900">
         <div className="container-versatile grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Col 1: Brand */}
           <div className="space-y-5">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-grace-navy to-grace-primary text-white font-black text-xl rounded-xl flex items-center justify-center border border-grace-primary/30 shadow-lg">
@@ -114,7 +114,6 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
           <div>
             <h5 className="font-bold text-white text-sm mb-5 uppercase tracking-wider font-serif border-b border-slate-800 pb-3">
               Quick Navigation
@@ -146,7 +145,6 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             </ul>
           </div>
 
-          {/* Col 3: Addresses */}
           <div className="space-y-6">
             <h5 className="font-bold text-white text-sm mb-5 uppercase tracking-wider font-serif border-b border-slate-800 pb-3">
               Our Facilities
@@ -189,7 +187,6 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
             </div>
           </div>
 
-          {/* Col 4: Contact */}
           <div>
             <h5 className="font-bold text-white text-sm mb-5 uppercase tracking-wider font-serif border-b border-slate-800 pb-3">
               Contact Information
@@ -246,7 +243,6 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenInquiry }) => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="container-versatile py-5 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-600 gap-2">
         <div>
           © 2026 <span className="text-slate-400 font-semibold">Grace Electrical & Contractors Pvt. Ltd.</span> All rights reserved.

@@ -8,7 +8,6 @@ interface ClientLogoItem {
   minWidth?: string;
 }
 
-// 23 Valued Clients — Cleanly cropped local high-res logos, bold, perfectly balanced & zero overlap
 const VALUED_CLIENTS: ClientLogoItem[] = [
   { id: "hpcl", name: "HPCL", src: "/logos/clients/hpcl.png", imgClass: "h-14 sm:h-16 md:h-18" },
   { id: "upcl", name: "UPCL", src: "/logos/clients/upcl.png", imgClass: "h-14 sm:h-16 md:h-18" },
@@ -35,7 +34,6 @@ const VALUED_CLIENTS: ClientLogoItem[] = [
   { id: "sparsh", name: "Sparsh Global School", src: "/logos/clients/sparsh.png", imgClass: "h-13 sm:h-15 md:h-17" },
 ];
 
-// 8 Authorized OEM Partners — Cleanly cropped local high-res logos, bold, perfectly balanced & zero overlap
 const OEM_PARTNERS: ClientLogoItem[] = [
   { id: "schneider", name: "Schneider Electric", src: "/logos/partners/schneider.png", imgClass: "h-12 sm:h-14 md:h-16", minWidth: "190px" },
   { id: "abb", name: "ABB", src: "/logos/partners/abb.png", imgClass: "h-12 sm:h-14 md:h-16", minWidth: "140px" },
@@ -57,7 +55,7 @@ function PureLogo({ item }: { item: ClientLogoItem }) {
         height: '80px',
       }}
     >
-      <img
+      <img decoding="async"
         src={item.src}
         alt={item.name}
         loading="lazy"
@@ -80,29 +78,24 @@ function PureLogo({ item }: { item: ClientLogoItem }) {
 export const ClientLogosMarquee: React.FC = () => {
   return (
     <section className="py-14 sm:py-16 bg-white text-slate-900 relative overflow-hidden border-t border-slate-100">
-      {/* Subtle modern background texture */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-35 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-grace-primary/20 to-transparent" />
 
       <div className="relative z-10">
 
-        {/* ── Heading: Our Valued Clients ─────────────── */}
         <div className="text-center mb-9 px-4">
           <h2 className="text-xl sm:text-2xl font-black font-serif text-slate-900 tracking-tight">
             Our Valued Clients
           </h2>
         </div>
 
-        {/* ── Marquee Single Row — Fluid Left Glide with rhythmic gaps ────────── */}
         <div className="overflow-hidden marquee-mask mb-12 sm:mb-14 w-full">
           <div className="animate-marquee-glide">
-            {/* Set A */}
             <div className="flex items-center gap-14 sm:gap-16 md:gap-20 pr-14 sm:pr-16 md:pr-20 flex-shrink-0">
               {VALUED_CLIENTS.map((item) => (
                 <PureLogo key={`c-a-${item.id}`} item={item} />
               ))}
             </div>
-            {/* Set B (Identical clone for 100% seamless infinite loop) */}
             <div className="flex items-center gap-14 sm:gap-16 md:gap-20 pr-14 sm:pr-16 md:pr-20 flex-shrink-0" aria-hidden="true">
               {VALUED_CLIENTS.map((item) => (
                 <PureLogo key={`c-b-${item.id}`} item={item} />
@@ -111,7 +104,6 @@ export const ClientLogosMarquee: React.FC = () => {
           </div>
         </div>
 
-        {/* ── Heading: Authorized OEM Partners ────────── */}
         <div className="border-t border-slate-100 pt-10 sm:pt-12 mt-2">
           <div className="text-center mb-9 px-4">
             <h3 className="text-lg sm:text-xl font-black font-serif text-slate-900 tracking-tight">
@@ -119,16 +111,13 @@ export const ClientLogosMarquee: React.FC = () => {
             </h3>
           </div>
 
-          {/* Continuous slow partner glide with rhythmic gaps */}
           <div className="overflow-hidden marquee-mask w-full">
             <div className="animate-marquee-glide-slow">
-              {/* Set A */}
               <div className="flex items-center gap-14 sm:gap-16 md:gap-20 pr-14 sm:pr-16 md:pr-20 flex-shrink-0">
                 {OEM_PARTNERS.map((p) => (
                   <PureLogo key={`pt-a-${p.id}`} item={p} />
                 ))}
               </div>
-              {/* Set B (Identical clone for 100% seamless infinite loop) */}
               <div className="flex items-center gap-14 sm:gap-16 md:gap-20 pr-14 sm:pr-16 md:pr-20 flex-shrink-0" aria-hidden="true">
                 {OEM_PARTNERS.map((p) => (
                   <PureLogo key={`pt-b-${p.id}`} item={p} />

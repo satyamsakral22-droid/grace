@@ -1,5 +1,3 @@
-// Authentic Data extracted strictly from Grace Profile 2026 (1).pdf & Client Email
-// NO GUESSED VALUES - 100% Accurate Profile Copy
 
 export interface CompanyInfo {
   name: string;
@@ -73,7 +71,6 @@ export const companyData: CompanyInfo = {
   ]
 };
 
-// 100% Exact Copy of About Company from PDF
 export const classNameAboutInfo = {
   aboutText1: "Grace is a professional Electrical contracting company. Since its inception in the year 2008, Grace Group has captured the field of Electrical in India. It has become a giant in this industry acquiring vast knowledge and experience and has generated strong customer base in different industries. Grace Group is established company based at Noida.",
   aboutText2: "Grace has carried out designing, Detailed Engineering, Supply, Fabrication, Erection, Installation, Testing and Commissioning of the Electrical, Plumbing, CCTV, PAS/BMS, Fire Fighting work and Mechanical System as per norms of Indian & International Standards. Grace Group is a leading provider of comprehensive electrical Panels offering innovative solutions to meet the diverse needs of residential, commercial, and industrial clients.",
@@ -88,26 +85,205 @@ export const classNameAboutInfo = {
   sustainableDevelopment: "GRACE recognizes that our activities and the activities of our supply chain have a global impact. Integrating sustainable development into our growth strategy, we have made it our priority to ensure safe working conditions and basic health coverage for all our employees."
 };
 
-// Electrical & MEPF Services directly from PDF
-export const electricalServices = [
-  { id: "s1", category: "electrical", title: "Switchyard (Up to 33 KV)", spec: "Up to 33 KV", description: "Turnkey contracts for design, engineering, supply, erection, testing & commissioning of outdoor switchyards up to 33 KV." },
-  { id: "s2", category: "electrical", title: "Outdoor/Indoor Sub-Station (Up to 33 KV)", spec: "33/11 KV Grid", description: "Complete turnkey development, execution, up-gradation & renovation of outdoor and indoor substations up to 33 KV." },
-  { id: "s3", category: "electrical", title: "H.T./ LT Transformers (Up to 10MVA)", spec: "Up to 10MVA", description: "Supply, installation, testing and commissioning of heavy HT and LT power transformers up to 10MVA capacity." },
-  { id: "s4", category: "electrical", title: "Ladder Type / Perforated Cable Trays & Raceways", spec: "Industrial Trays", description: "Manufacturing and laying of heavy-duty ladder type and perforated cable trays, raceways, and support structures." },
-  { id: "s5", category: "electrical", title: "TPN Bus-duct and Trenching", spec: "TPN Bus-Duct", description: "Supplying of TPN Bus-duct systems, trenching, busbar connection, and distribution cabling." },
-  { id: "s6", category: "electrical", title: "High Mast / Road Lighting", spec: "High Mast Towers", description: "Turnkey high mast illumination towers, stadium lighting, and commercial road lighting infrastructure." },
-  { id: "s7", category: "electrical", title: "33/11 KV Substation Underground Line", spec: "Underground Lines", description: "Laying, jointing, testing and commissioning of 33/11 KV HT underground cable networks." },
-  { id: "s8", category: "electrical", title: "33/11 KV Overhead Line", spec: "Overhead Lines", description: "Erection of HT overhead transmission pole lines, insulators, and conductor stringing." },
-  { id: "s9", category: "electrical", title: "Earthing Protection Systems", spec: "Plate / Pipe / Chemical Electrode", description: "Complete earthing protection systems utilizing maintenance-free chemical electrodes, copper plate, and pipe electrodes." }
+export interface ServiceItem {
+  id: string;
+  category: string;
+  title: string;
+  spec: string;
+  description: string;
+  image: string;
+  imageOptions?: string[];
+}
+
+export const electricalServices: ServiceItem[] = [
+  {
+    id: "s1",
+    category: "electrical",
+    title: "Switchyard (Up to 33 KV)",
+    spec: "Up to 33 KV",
+    description: "Turnkey contracts for design, engineering, supply, erection, testing & commissioning of outdoor switchyards up to 33 KV.",
+    image: "/services/switchyard-33kv-1.jpg",
+    imageOptions: [
+      "/services/switchyard-33kv-1.jpg",
+      "/services/switchyard-33kv-2.jpg",
+      "https://www.iitr.ac.in/estateworks/css/images/recent/substation1.jpg"
+    ]
+  },
+  {
+    id: "s2",
+    category: "electrical",
+    title: "Outdoor/Indoor Sub-Station (Up to 33 KV)",
+    spec: "33/11 KV Grid",
+    description: "Complete turnkey development, execution, up-gradation & renovation of outdoor and indoor substations up to 33 KV.",
+    image: "/services/substation-33kv-1.jpg",
+    imageOptions: [
+      "/services/substation-33kv-1.jpg",
+      "/services/substation-33kv-2.jpg",
+      "https://www.powertechindia.org/assets/img/epc-projects/33-kv-substation.jpg"
+    ]
+  },
+  {
+    id: "s3",
+    category: "electrical",
+    title: "H.T./ LT Transformers (Up to 10MVA)",
+    spec: "Up to 10MVA",
+    description: "Supply, installation, testing and commissioning of heavy HT and LT power transformers up to 10MVA capacity.",
+    image: "/services/transformer-10mva-1.jpg",
+    imageOptions: [
+      "/services/transformer-10mva-1.jpg",
+      "/services/transformer-10mva-2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/9/9c/Substation_Power_Transformer_1.jpg"
+    ]
+  },
+  {
+    id: "s4",
+    category: "electrical",
+    title: "Ladder Type / Perforated Cable Trays & Raceways",
+    spec: "Industrial Trays",
+    description: "Manufacturing and laying of heavy-duty ladder type and perforated cable trays, raceways, and support structures.",
+    image: "/services/cable-trays-1.jpg",
+    imageOptions: [
+      "/services/cable-trays-1.jpg",
+      "/services/cable-trays-2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/1/1d/OrganizedElectricalWiring.jpg"
+    ]
+  },
+  {
+    id: "s5",
+    category: "electrical",
+    title: "TPN Bus-duct and Trenching",
+    spec: "TPN Bus-Duct",
+    description: "Supplying of TPN Bus-duct systems, trenching, busbar connection, and distribution cabling.",
+    image: "/services/busduct-tpn-1.jpg",
+    imageOptions: [
+      "/services/busduct-tpn-1.jpg",
+      "/services/busduct-tpn-2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/c/c5/Sample_busbar_trunking_system.jpg"
+    ]
+  },
+  {
+    id: "s6",
+    category: "electrical",
+    title: "High Mast / Road Lighting",
+    spec: "High Mast Towers",
+    description: "Turnkey high mast illumination towers, stadium lighting, and commercial road lighting infrastructure.",
+    image: "/services/high-mast-lighting-1.jpg",
+    imageOptions: [
+      "/services/high-mast-lighting-1.jpg",
+      "/services/high-mast-lighting-2.jpg",
+      "/services/high-mast-lighting-3.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/f6/High-mast_Lighting.jpg"
+    ]
+  },
+  {
+    id: "s7",
+    category: "electrical",
+    title: "33/11 KV Substation Underground Line",
+    spec: "Underground Lines",
+    description: "Laying, jointing, testing and commissioning of 33/11 KV HT underground cable networks.",
+    image: "/services/underground-cables-1.jpg",
+    imageOptions: [
+      "/services/underground-cables-1.jpg",
+      "/services/underground-cables-2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/f3/Cable_Laying_Services.jpg"
+    ]
+  },
+  {
+    id: "s8",
+    category: "electrical",
+    title: "33/11 KV Overhead Line",
+    spec: "Overhead Lines",
+    description: "Erection of HT overhead transmission pole lines, insulators, and conductor stringing.",
+    image: "/services/overhead-lines-1.jpg",
+    imageOptions: [
+      "/services/overhead-lines-1.jpg",
+      "/services/overhead-lines-2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3f/Insulator_on_an_overhead_powerline.jpg"
+    ]
+  },
+  {
+    id: "s9",
+    category: "electrical",
+    title: "Earthing Protection Systems",
+    spec: "Plate / Pipe / Chemical Electrode",
+    description: "Complete earthing protection systems utilizing maintenance-free chemical electrodes, copper plate, and pipe electrodes.",
+    image: "/services/earthing-systems-1.jpg",
+    imageOptions: [
+      "/services/earthing-systems-1.jpg",
+      "/services/earthing-systems-2.jpg",
+      "https://lathearthing.com/wp-content/uploads/2025/02/PURE-COPPER-ELECTRODE.webp"
+    ]
+  }
 ];
 
-export const mepfServices = [
-  { id: "m1", category: "mepf", title: "Fire Fighting Solutions", spec: "Turnkey FF Systems", description: "Sprinkler networks, fire hydrant systems, diesel & motor fire pumps, and fire protection contracting." },
-  { id: "m2", category: "mepf", title: "Plumbing Systems", spec: "Sanitary & Piping", description: "Industrial and commercial water supply piping, drainage systems, pumps, and water treatment integration." },
-  { id: "m3", category: "mepf", title: "HVAC & Ventilation System", spec: "Climate & Air Handling", description: "Chilled water systems, ducting, AHU units, industrial ventilation, and cleanroom air handling." },
-  { id: "m4", category: "mepf", title: "Industrial Installation", spec: "Machines, Motors & Pumps", description: "Turnkey erection and electrical wiring of all industrial machines, heavy motors, and centrifugal pump sets." },
-  { id: "m5", category: "mepf", title: "PAS, Security and Fire Alarm System", spec: "CCTV, PAS/BMS Integration", description: "Public address systems, building management systems (BMS), CCTV surveillance, and intelligent fire alarm panels." },
-  { id: "m6", category: "mepf", title: "Lighting System", spec: "Industrial & Commercial", description: "Energy-efficient LED lighting design, busbar trunking lighting, emergency lighting, and architectural fixtures." }
+export const mepfServices: ServiceItem[] = [
+  {
+    id: "m1",
+    category: "mepf",
+    title: "Fire Fighting Solutions",
+    spec: "Turnkey FF Systems",
+    description: "Sprinkler networks, fire hydrant systems, diesel & motor fire pumps, and fire protection contracting.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    imageOptions: [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+    ]
+  },
+  {
+    id: "m2",
+    category: "mepf",
+    title: "Plumbing Systems",
+    spec: "Sanitary & Piping",
+    description: "Industrial and commercial water supply piping, drainage systems, pumps, and water treatment integration.",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+    imageOptions: [
+      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"
+    ]
+  },
+  {
+    id: "m3",
+    category: "mepf",
+    title: "HVAC & Ventilation System",
+    spec: "Climate & Air Handling",
+    description: "Chilled water systems, ducting, AHU units, industrial ventilation, and cleanroom air handling.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    imageOptions: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+    ]
+  },
+  {
+    id: "m4",
+    category: "mepf",
+    title: "Industrial Installation",
+    spec: "Machines, Motors & Pumps",
+    description: "Turnkey erection and electrical wiring of all industrial machines, heavy motors, and centrifugal pump sets.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    imageOptions: [
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+    ]
+  },
+  {
+    id: "m5",
+    category: "mepf",
+    title: "PAS, Security and Fire Alarm System",
+    spec: "CCTV, PAS/BMS Integration",
+    description: "Public address systems, building management systems (BMS), CCTV surveillance, and intelligent fire alarm panels.",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+    imageOptions: [
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+    ]
+  },
+  {
+    id: "m6",
+    category: "mepf",
+    title: "Lighting System",
+    spec: "Industrial & Commercial",
+    description: "Energy-efficient LED lighting design, busbar trunking lighting, emergency lighting, and architectural fixtures.",
+    image: "/services/high-mast-lighting-2.jpg",
+    imageOptions: [
+      "/services/high-mast-lighting-2.jpg",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
+    ]
+  }
 ];
 
 export interface PanelItem {
@@ -120,53 +296,220 @@ export interface PanelItem {
   features: string[];
   description: string;
   image: string;
+  imageOptions?: string[];
 }
 
-// Product Range directly from Page 13 of PDF
 export const productRangeCategory: { category: string; items: PanelItem[] }[] = [
   {
     category: "1. Electrical Panels & Power Distribution Systems",
     items: [
-      { id: "p1", name: "Power Control Center (PCC Panels)", rating: "Up to 6300A", detail: "Fixed and Draw-out type up to 6300A", category: "Main Distribution", type: "Fixed & Draw-out", features: ["Double Busbar Option", "IP-55 Enclosure Protection", "Form 4b Separation", "Air Circuit Breakers (ACB)"], description: "Robust Main LT Panels designed for high current power distribution in manufacturing plants, commercial malls, and high-rise complexes.", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" },
-      { id: "p2", name: "Motor Control Centres (MCC Panels)", rating: "Up to 1600A", detail: "Fixed and Draw-out type up to 1600A", category: "Motor Control", type: "IMCC / Fixed / Draw-out", features: ["Intelligent Motor Controller", "VFD & Soft Starter Modules", "Thermal Overload Protection", "Short Circuit Withstand 50kA"], description: "Centralized motor control panels engineered for precise motor management in heavy industrial plants and HVAC pump systems.", image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" },
-      { id: "p3", name: "Double Bus Bar Power Panels", rating: "Up to 6300A", detail: "Heavy-duty double busbar power panels up to 6300A", category: "Power Panel", type: "Double Busbar", features: ["6300A Double Busbar", "Dual Supply Source Interlock", "IP-55 Protection"], description: "Double busbar main power panels for uninterrupted dual power source switching.", image: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80" },
-      { id: "p4", name: "Control & Relay Mimic Panels", rating: "Up to 132 kV", detail: "Substation control and relay mimic protection panels up to 132 kV", category: "Substation Control", type: "Mimic Control", features: ["Up to 132 kV Rating", "Mimic Single Line Diagram", "Protection Relays"], description: "Substation control and relay mimic protection panels up to 132 kV.", image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80" },
-      { id: "p5", name: "Automatic Power Factor Correction (APFC) Panels", rating: "Up to 1500 KVAR", detail: "Microprocessor-based automatic power factor panels up to 1500 KVAR", category: "Power Factor", type: "Automatic APFC", features: ["Harmonic Detuned Reactors", "Heavy Duty Capacitors", "Thyristor Switching Option", "Real-time cos φ Monitoring"], description: "Eliminate low power factor penalties and optimize energy efficiency for commercial and industrial electrical grids.", image: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80" },
-      { id: "p6", name: "Feeder Pillars", rating: "Up to 3200A", detail: "Outdoor distribution feeder pillars up to 3200A", category: "Outdoor Distribution", type: "Weatherproof IP-65", features: ["Up to 3200A Rating", "Aluminum / Copper Busbars", "Feeder Switches"], description: "Outdoor distribution feeder pillars built for street lighting and outdoor power grids.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" }
+      {
+        id: "p1",
+        name: "Power Control Center (PCC Panels)",
+        rating: "Up to 6300A",
+        detail: "Fixed and Draw-out type up to 6300A",
+        category: "Main Distribution",
+        type: "Fixed & Draw-out",
+        features: ["Double Busbar Option", "IP-55 Enclosure Protection", "Form 4b Separation", "Air Circuit Breakers (ACB)"],
+        description: "Robust Main LT Panels designed for high current power distribution in manufacturing plants, commercial malls, and high-rise complexes.",
+        image: "/services/pcc-panel-1.jpg",
+        imageOptions: [
+          "/services/pcc-panel-1.jpg",
+          "/services/pcc-panel-2.jpg",
+          "https://www.panelelectro.com/images/pcc_panel.jpeg"
+        ]
+      },
+      {
+        id: "p2",
+        name: "Motor Control Centres (MCC Panels)",
+        rating: "Up to 1600A",
+        detail: "Fixed and Draw-out type up to 1600A",
+        category: "Motor Control",
+        type: "IMCC / Fixed / Draw-out",
+        features: ["Intelligent Motor Controller", "VFD & Soft Starter Modules", "Thermal Overload Protection", "Short Circuit Withstand 50kA"],
+        description: "Centralized motor control panels engineered for precise motor management in heavy industrial plants and HVAC pump systems.",
+        image: "/services/mcc-panel-1.jpg",
+        imageOptions: [
+          "/services/mcc-panel-1.jpg",
+          "/services/mcc-panel-2.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/e/ea/Motor_control_center_%28MCC%29.jpg"
+        ]
+      },
+      {
+        id: "p3",
+        name: "Double Bus Bar Power Panels",
+        rating: "Up to 6300A",
+        detail: "Heavy-duty double busbar power panels up to 6300A",
+        category: "Power Panel",
+        type: "Double Busbar",
+        features: ["6300A Double Busbar", "Dual Supply Source Interlock", "IP-55 Protection"],
+        description: "Double busbar main power panels for uninterrupted dual power source switching.",
+        image: "/services/double-busbar-1.jpg",
+        imageOptions: [
+          "/services/double-busbar-1.jpg",
+          "/services/double-busbar-2.jpg",
+          "https://rpsswitchgear.com/wp-content/uploads/2026/07/LMVP-Switchgear-Range.jpg"
+        ]
+      },
+      {
+        id: "p4",
+        name: "Control & Relay Mimic Panels",
+        rating: "Up to 132 kV",
+        detail: "Substation control and relay mimic protection panels up to 132 kV",
+        category: "Substation Control",
+        type: "Mimic Control",
+        features: ["Up to 132 kV Rating", "Mimic Single Line Diagram", "Protection Relays"],
+        description: "Substation control and relay mimic protection panels up to 132 kV.",
+        image: "/services/pcc-panel-2.jpg",
+        imageOptions: [
+          "/services/pcc-panel-2.jpg",
+          "/services/pcc-panel-1.jpg"
+        ]
+      },
+      {
+        id: "p5",
+        name: "Automatic Power Factor Correction (APFC) Panels",
+        rating: "Up to 1500 KVAR",
+        detail: "Microprocessor-based automatic power factor panels up to 1500 KVAR",
+        category: "Power Factor",
+        type: "Automatic APFC",
+        features: ["Harmonic Detuned Reactors", "Heavy Duty Capacitors", "Thyristor Switching Option", "Real-time cos φ Monitoring"],
+        description: "Eliminate low power factor penalties and optimize energy efficiency for commercial and industrial electrical grids.",
+        image: "/services/pcc-panel-2.jpg",
+        imageOptions: [
+          "/services/pcc-panel-2.jpg",
+          "/services/mcc-panel-2.jpg"
+        ]
+      },
+      {
+        id: "p6",
+        name: "Feeder Pillars",
+        rating: "Up to 3200A",
+        detail: "Outdoor distribution feeder pillars up to 3200A",
+        category: "Outdoor Distribution",
+        type: "Weatherproof IP-65",
+        features: ["Up to 3200A Rating", "Aluminum / Copper Busbars", "Feeder Switches"],
+        description: "Outdoor distribution feeder pillars built for street lighting and outdoor power grids.",
+        image: "/services/pcc-panel-2.jpg",
+        imageOptions: [
+          "/services/pcc-panel-2.jpg"
+        ]
+      }
     ]
   },
   {
     category: "2. Automation & Control Systems",
     items: [
-      { id: "p7", name: "PLC-Based Auto Load Management Systems", rating: "Automated Control", detail: "Programmable logic controller auto load shedding and management", category: "Automation", type: "PLC System", features: ["Auto Load Shedding", "PLC Logic Control", "Touchscreen HMI"], description: "Programmable logic controller auto load shedding and management.", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" },
-      { id: "p8", name: "PLC & Drive-Based HVAC Control Panels", rating: "Up to 100 Drives", detail: "VFD & PLC automated panels controlling up to 100 HVAC drives", category: "HVAC Automation", type: "VFD Drive Control", features: ["Up to 100 Drives Control", "VFD Speed Regulation", "BMS Integration"], description: "VFD & PLC automated panels controlling up to 100 HVAC drives.", image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" },
-      { id: "p9", name: "Power Management Systems (SCADA-Based PLC Panels)", rating: "SCADA Integrated", detail: "For real-time power monitoring, telemetry, and energy management", category: "SCADA", type: "Power Monitoring", features: ["SCADA Telemetry", "Energy Metering", "Modbus RTU Communication"], description: "For real-time power monitoring, telemetry, and energy management.", image: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80" },
-      { id: "p10", name: "Auto / Manual Synchronizing Panels", rating: "Genset Sync", detail: "Auto and manual DG set synchronization panels", category: "DG Synchronization", type: "Genset Control", features: ["Auto / Manual Mode", "Genset Protection", "Bus Coupler Control"], description: "Auto and manual DG set synchronization panels.", image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80" },
-      { id: "p11", name: "Auto Synchronizing Load Sharing & Management Panels", rating: "Up to 8 DG Sets", detail: "Automatic load sharing between up to 8 DG sets", category: "Load Sharing", type: "Parallel DG Control", features: ["Up to 8 DG Sets", "Equal Load Distribution", "Peak Shaving Logic"], description: "Automatic load sharing between up to 8 DG sets.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" }
+      {
+        id: "p7",
+        name: "PLC-Based Auto Load Management Systems",
+        rating: "Automated Control",
+        detail: "Programmable logic controller auto load shedding and management",
+        category: "Automation",
+        type: "PLC System",
+        features: ["Auto Load Shedding", "PLC Logic Control", "Touchscreen HMI"],
+        description: "Programmable logic controller auto load shedding and management.",
+        image: "/services/pcc-panel-2.jpg",
+        imageOptions: ["/services/pcc-panel-2.jpg"]
+      },
+      {
+        id: "p8",
+        name: "PLC & Drive-Based HVAC Control Panels",
+        rating: "Up to 100 Drives",
+        detail: "VFD & PLC automated panels controlling up to 100 HVAC drives",
+        category: "HVAC Automation",
+        type: "VFD Drive Control",
+        features: ["Up to 100 Drives Control", "VFD Speed Regulation", "BMS Integration"],
+        description: "VFD & PLC automated panels controlling up to 100 HVAC drives.",
+        image: "/services/mcc-panel-2.jpg",
+        imageOptions: ["/services/mcc-panel-2.jpg"]
+      },
+      {
+        id: "p9",
+        name: "Power Management Systems (SCADA-Based PLC Panels)",
+        rating: "SCADA Integrated",
+        detail: "For real-time power monitoring, telemetry, and energy management",
+        category: "SCADA",
+        type: "Power Monitoring",
+        features: ["SCADA Telemetry", "Energy Metering", "Modbus RTU Communication"],
+        description: "For real-time power monitoring, telemetry, and energy management.",
+        image: "/services/pcc-panel-1.jpg",
+        imageOptions: ["/services/pcc-panel-1.jpg"]
+      },
+      {
+        id: "p10",
+        name: "Auto / Manual Synchronizing Panels",
+        rating: "Genset Sync",
+        detail: "Auto and manual DG set synchronization panels",
+        category: "DG Synchronization",
+        type: "Genset Control",
+        features: ["Auto / Manual Mode", "Genset Protection", "Bus Coupler Control"],
+        description: "Auto and manual DG set synchronization panels.",
+        image: "/services/pcc-panel-2.jpg",
+        imageOptions: ["/services/pcc-panel-2.jpg"]
+      },
+      {
+        id: "p11",
+        name: "Auto Synchronizing Load Sharing & Management Panels",
+        rating: "Up to 8 DG Sets",
+        detail: "Automatic load sharing between up to 8 DG sets",
+        category: "Load Sharing",
+        type: "Parallel DG Control",
+        features: ["Up to 8 DG Sets", "Equal Load Distribution", "Peak Shaving Logic"],
+        description: "Automatic load sharing between up to 8 DG sets.",
+        image: "/services/pcc-panel-1.jpg",
+        imageOptions: ["/services/pcc-panel-1.jpg"]
+      }
     ]
   },
   {
     category: "3. Busbar & Power Distribution Systems",
     items: [
-      { id: "p12", name: "Bus Trunking Systems", rating: "Up to 5000A", detail: "Segregated / Compact Type bus trunking up to 5000A", category: "Busbar Transmission", type: "Compact / Segregated", features: ["Up to 5000A Rating", "Copper / Aluminum Conductor", "Low Voltage Drop"], description: "Segregated / Compact Type bus trunking up to 5000A.", image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" },
-      { id: "p13", name: "Rising Mains", rating: "Up to 5000A", detail: "Segregated / Compact Type vertical rising mains up to 5000A", category: "Vertical Distribution", type: "Rising Main", features: ["Up to 5000A Capacity", "Tap-off Boxes", "Fire Barrier Seals"], description: "Segregated / Compact Type vertical rising mains up to 5000A.", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" }
+      {
+        id: "p12",
+        name: "Bus Trunking Systems",
+        rating: "Up to 5000A",
+        detail: "Segregated / Compact Type bus trunking up to 5000A",
+        category: "Busbar Transmission",
+        type: "Compact / Segregated",
+        features: ["Up to 5000A Rating", "Copper / Aluminum Conductor", "Low Voltage Drop"],
+        description: "Segregated / Compact Type bus trunking up to 5000A.",
+        image: "/services/busduct-tpn-1.jpg",
+        imageOptions: [
+          "/services/busduct-tpn-1.jpg",
+          "/services/busduct-tpn-2.jpg"
+        ]
+      },
+      {
+        id: "p13",
+        name: "Rising Mains",
+        rating: "Up to 5000A",
+        detail: "Segregated / Compact Type vertical rising mains up to 5000A",
+        category: "Vertical Distribution",
+        type: "Rising Main",
+        features: ["Up to 5000A Capacity", "Tap-off Boxes", "Fire Barrier Seals"],
+        description: "Segregated / Compact Type vertical rising mains up to 5000A.",
+        image: "/services/busduct-tpn-2.jpg",
+        imageOptions: [
+          "/services/busduct-tpn-2.jpg",
+          "/services/busduct-tpn-1.jpg"
+        ]
+      }
     ]
   },
   {
     category: "4. Railway Products",
     items: [
-      { id: "p14", name: "Retention Tanks for Railway Coaches", rating: "SS-316 Stainless Steel", detail: "Bio-retention tanks manufactured for Indian Railways passenger coaches", category: "Railway Coach", type: "SS-316 Fabrication", features: ["SS-316 Grade Stainless Steel", "RDSO Approved Specification", "Leak Proof TIG Weld"], description: "Bio-retention tanks manufactured for Indian Railways passenger coaches.", image: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80" },
-      { id: "p15", name: "Railway Electrical Fuse Boxes", rating: "Vibration Resistant", detail: "Locomotive and coach underframe electrical fuse boxes", category: "Locomotive Stock", type: "Vibration Resistant", features: ["Vibration Resistant Design", "IP-66 Enclosure", "High Voltage Insulation"], description: "Locomotive and coach underframe electrical fuse boxes.", image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80" },
-      { id: "p16", name: "Custom Fabricated Railway Electrical Enclosures", rating: "IP-66 Enclosure", detail: "Specialized metal enclosures for railway electrical stock", category: "Railway Enclosure", type: "Custom Metal Box", features: ["IP-66 Powder Coated", "CNC Laser Cut Body", "RDSO Norms"], description: "Specialized metal enclosures for railway electrical stock.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" }
+      { id: "p14", name: "Retention Tanks for Railway Coaches", rating: "SS-316 Stainless Steel", detail: "Bio-retention tanks manufactured for Indian Railways passenger coaches", category: "Railway Coach", type: "SS-316 Fabrication", features: ["SS-316 Grade Stainless Steel", "RDSO Approved Specification", "Leak Proof TIG Weld"], description: "Bio-retention tanks manufactured for Indian Railways passenger coaches.", image: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80", imageOptions: ["https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&w=800&q=80"] },
+      { id: "p15", name: "Railway Electrical Fuse Boxes", rating: "Vibration Resistant", detail: "Locomotive and coach underframe electrical fuse boxes", category: "Locomotive Stock", type: "Vibration Resistant", features: ["Vibration Resistant Design", "IP-66 Enclosure", "High Voltage Insulation"], description: "Locomotive and coach underframe electrical fuse boxes.", image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80", imageOptions: ["https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80"] },
+      { id: "p16", name: "Custom Fabricated Railway Electrical Enclosures", rating: "IP-66 Enclosure", detail: "Specialized metal enclosures for railway electrical stock", category: "Railway Enclosure", type: "Custom Metal Box", features: ["IP-66 Powder Coated", "CNC Laser Cut Body", "RDSO Norms"], description: "Specialized metal enclosures for railway electrical stock.", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80", imageOptions: ["https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80"] }
     ]
   }
 ];
 
-// Compatibility Export Aliases
 export const servicesData = [...electricalServices, ...mepfServices];
 export const productPanels = productRangeCategory[0].items;
 
-// Machinery Strength - Complete 32 Items from Page 9 of PDF
 export const machineryStrengthList = [
   "1. CNC Fiber Laser Cutting Machine – 1.5 KW",
   "2. Drill Machine",
@@ -210,7 +553,6 @@ export const machineryStrength = machineryStrengthList.map((m, idx) => ({
   description: "In-house manufacturing equipment at Greater Noida Plant."
 }));
 
-// Testing Strength - Complete 14 Items from Page 10 of PDF
 export const testingStrengthList = [
   "• High Voltage Test Set 2.5/5 KV. Automatic Multi Meter (Fluke, Rushall) Automatic Clamp Meter",
   "• With flexible CT up to 4000A",
@@ -228,7 +570,6 @@ export const testingStrengthList = [
   "• Measuring Tape – 3 m / 5 m"
 ];
 
-// Flowchart Project Processing Steps from Page 14 of PDF
 export const projectProcessingFlowchart = [
   { step: "01", stage: "Customer Marketing / Tender Collection", desc: "Tender acquisition & preliminary requirement gathering" },
   { step: "02", stage: "Costing Tender Submission", desc: "Detailed technical costing and formal bid submission" },
@@ -242,7 +583,6 @@ export const projectProcessingFlowchart = [
   { step: "10", stage: "Handing Over & Customer Service", desc: "User training, general maintenance instruction, fault finding support & handing over" }
 ];
 
-// Team Breakdown
 export const teamBreakdown = {
   technical: [
     { title: "Project Incharge", count: 1, qualification: "B.Tech / Graduate Engg. With experience" },
@@ -270,7 +610,6 @@ export const teamBreakdown = {
   ]
 };
 
-// Complete Project List from PDF Pages 19-22
 export const ongoingProjects = {
   residential: [
     "1. Aims Max Gardenia Developers Pvt. Ltd. Sector 75",
@@ -325,7 +664,6 @@ export const projectHighlights = [
   ...ongoingProjects.commercial.map((p, i) => ({ id: `p-${i}`, title: p, client: "Commercial Client", category: "commercial", location: "NCR", status: "ongoing" }))
 ];
 
-// Valuable Clients from Page 25 of PDF
 export const valuableClientsList = [
   "HP (Hindustan Petroleum)", "Sapura Energy", "L&T (Larsen & Toubro)", "Newtech", "UP Power Corporation",
   "Omaxe Group", "Gardenia Group", "Mankind Pharma", "Akash Hospital", "Modi Industries",
@@ -336,14 +674,12 @@ export const valuableClientsList = [
 
 export const valuableClients = valuableClientsList;
 
-// Channel Partners from Page 26 of PDF
 export const channelPartnersList = [
   "Havells", "Schneider Electric", "Polycab Wires", "KEI Wires & Cables", "ABB", "L&T Switchgear", "PVJ Power", "LS Power Control"
 ];
 
 export const channelPartners = channelPartnersList.map(name => ({ name, role: "Authorized Partner" }));
 
-// Career Openings
 export const careerOpenings = [
   {
     id: "job-1",

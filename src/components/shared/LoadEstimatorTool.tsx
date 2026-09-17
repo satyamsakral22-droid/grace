@@ -6,12 +6,9 @@ export const LoadEstimatorTool: React.FC = () => {
   const [voltage, setVoltage] = useState<number>(415); // 415V 3-Phase standard
   const [powerFactor, setPowerFactor] = useState<number>(0.85);
 
-  // 3-Phase Amps Calculation: I = (kVA * 1000) / (√3 * V)
   const currentAmps = Math.round((loadKva * 1000) / (Math.sqrt(3) * voltage));
-  // Recommended Busbar rating (with 25% safety margin)
   const recommendedRating = Math.round(currentAmps * 1.25);
 
-  // Recommended Grace Panel Type
   const getPanelRecommendation = (amps: number) => {
     if (amps <= 400) return { name: "Wall Mounted Distribution Panel / Feeder Pillar", rating: "400A IP-55 Enclosure" };
     if (amps <= 1600) return { name: "MCC / Distribution Control Panel", rating: "1600A Draw-out / Fixed" };
@@ -34,7 +31,6 @@ export const LoadEstimatorTool: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Controls */}
         <div className="space-y-5">
           <div>
             <div className="flex justify-between text-xs font-semibold text-slate-700 mb-2">
@@ -89,7 +85,6 @@ export const LoadEstimatorTool: React.FC = () => {
           </div>
         </div>
 
-        {/* Calculated Results Box */}
         <div className="bg-slate-900 text-white rounded-xl p-6 relative overflow-hidden shadow-lg border border-slate-800">
           <div className="absolute -right-10 -bottom-10 opacity-10">
             <Zap className="w-48 h-48 text-cyan-400" />

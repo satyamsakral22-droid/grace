@@ -63,7 +63,6 @@ export const App: React.FC = () => {
         onOpenInquiry={handleOpenInquiry}
       />
 
-      {/* Global Inquiry RFQ Modal */}
       <QuickInquiryModal 
         isOpen={inquiryModalOpen}
         onClose={() => setInquiryModalOpen(false)}

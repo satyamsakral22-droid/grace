@@ -26,7 +26,6 @@ export const QuickInquiryModal: React.FC<Props> = ({ isOpen, onClose, defaultPro
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
-      // auto reset after 3s
     }, 3000);
   };
 
@@ -34,7 +33,6 @@ export const QuickInquiryModal: React.FC<Props> = ({ isOpen, onClose, defaultPro
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
       <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100">
         
-        {/* Header */}
         <div className="bg-gradient-to-r from-grace-navy via-grace-deep to-grace-primary p-6 text-white flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-cyan-300 bg-white/10 px-2.5 py-1 rounded-full">
@@ -51,7 +49,6 @@ export const QuickInquiryModal: React.FC<Props> = ({ isOpen, onClose, defaultPro
           </button>
         </div>
 
-        {/* Modal Body */}
         <div className="p-6 md:p-8 max-h-[80vh] overflow-y-auto">
           {submitted ? (
             <div className="text-center py-12 space-y-4">
