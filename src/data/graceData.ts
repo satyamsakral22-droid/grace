@@ -234,9 +234,10 @@ export const mepfServices: ServiceItem[] = [
     title: "Plumbing Systems",
     spec: "Sanitary & Piping",
     description: "Industrial and commercial water supply piping, drainage systems, pumps, and water treatment integration.",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+    image: "/services/plumbing-systems.jpg",
     imageOptions: [
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"
+      "/services/plumbing-systems.jpg",
+      "https://sc-cms-prod103-cdn-dsb5cvath4adbgd0.z01.azurefd.net/-/media/images/aerotek/business-insights/plumbing_career_social-jpg.jpg?rev=d535c3705c67442fb68fe4404fae26d1"
     ]
   },
   {

@@ -20,12 +20,12 @@ const serviceImages = [
 ];
 
 const mepfImages = [
-  'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80', // plumbing pipes
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', // HVAC / building systems
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', // fire safety
-  'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80', // modern building
-  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80', // architecture/construction
-  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', // team at work
+  '/services/plumbing-systems.jpg',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+  'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80',
+  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
 ];
 
 export const MepServicesPage: React.FC<Props> = ({ onOpenInquiry }) => {
